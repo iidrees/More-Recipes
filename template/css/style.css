@@ -81,6 +81,29 @@ h1 {
 }
 
 
+/*Fave recipe styles*/
+/*#blockq {
+    display: block;
+   
+    
+}*/
+blockquote {
+    font-family: 'Encode Sans Expanded', sans-serif;
+    font-size: 15px;
+    color: purple;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;
+}
+
+/*Profiles*/
+#profile {
+  background-color: pink;
+}
 /*Footer styles*/
 .footer {
   /* add more styles later*/
