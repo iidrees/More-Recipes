@@ -28,32 +28,73 @@
 
   </head>
   <body id="home">
+     <header >
+      
+    
+      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-light bg-light">
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">More-Recipes!</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto ">
+           <!-- <% if (user) { %>
+            <li>
+              <p class="navbar-text">
+                <strong>Hi,</strong>
+                <%= user.username %>
+              </p>
+            </li>
+            <% } %>-->
+            
+            <li class="nav-item">
+              <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="recipeDetails.html">Recipe Details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Add Recipe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Favourite Recipe</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profle</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
     <div class="container">
       <div class="row">
       <div class="text-center">
-        <h1>Welcome to the More Recipes Homepage</h1>
+        <h1>Welcome to the More-Recipes Homepage</h1>
         <p class="home-para">To Navigate through this site, please click on any thumbnail below to get access to some of the main sections of this web Application</p>
       </div>
         
       </div>
     </div>
-    <hr>
+
+    <hr >
 
     <div class="container">
       <div class="row">
         <div class="col-sm-4 home-row" >
-          <a href="#"><img src="./images/homepage/recipe-catalog.png" class="img-thumbnail" alt="Recipe Listing/Catalog"></a>
+          <a href="recipeListing.html"><img src="./images/homepage/recipe-catalog.png" class="img-thumbnail" alt="Recipe Listing/Catalog"></a>
           <p class="home-para">Recipe Listing/Catalog page</p>
         </div>
         <div class="col-sm-4 home-row">
-          <a href="#"><img src="./images/homepage/recipe-details.jpg" class="img-thumbnail" alt="Recipe Listing/Catalog"></a>
+          <a href="recipeDetails.html"><img src="./images/homepage/recipe-details.jpg" class="img-thumbnail" alt="Recipe Listing/Catalog"></a>
           <p class="home-para">Recipe Details Page</p>
         </div>
       </div>
       <div class="row">
         <div class="col-sm-4 home-row">
           <a href="#"><img src="./images/homepage/profile-page.jpg" class="img-thumbnail" alt="Recipe Listing/Catalog"></a>
-          <p>Profile Page</p>
+          <p class="home-para">Profile Page</p>
         </div>
         <div class="col-sm-4 home-row">
           <a href="#"><img src="./images/homepage/add-more.jpg" class="img-thumbnail" alt="Recipe Listing/Catalog"></a>
