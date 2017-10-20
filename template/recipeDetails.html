@@ -54,15 +54,14 @@
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
             </li>
-           
             <li class="nav-item">
-              <a class="nav-link" href="#">Add Recipe</a>
+              <a class="nav-link" href="addRecipe.html">Add Recipe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Favourite Recipe</a>
+              <a class="nav-link" href="favoriteRecipe.html">Favourite Recipe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profle</a>
+              <a class="nav-link" href="profile.html">My Profle</a>
             </li>
           </ul>
         </div>
@@ -78,6 +77,7 @@
           </p>
         </div>
       </div>
+    
       <hr >
     </div><!-- End container for the Header section -->
     <div class="container" id="recipe-details"><!-- Container div for the Recipe Details, Recipe reviews section section-->
@@ -88,15 +88,19 @@
             <img src="./images/homepage/recipe-catalog.png" class="img-thumbnail" alt="Recipe Listing/Catalog">
             <p class="home-para">Jollof Rice Recipe</p>
           </div>
-          <p>Added by: Idrees Kurosaki</p>
-          <p>Added on: 20th October 2017</p>
-          <p>Recipe Steps: 10</p>
+          <form method="PUT" action="/edit-recipe">
+              <button type="button" class="btn btn-outline-primary btn-sm" id="down-vote">Edit Recipe</button>
+            </form>
+          <p class="home-para">Added by: Idrees Kurosaki</p>
+          <p class="home-para">Added on: 20th October 2017</p>
+          <p class="home-para">Recipe Steps: 10</p>
           <div>
             
           </div>
-            <p >Recipe Votes: <span id="count">0</span> </p>
+            <p class="home-para">Recipe Votes: <span id="count">0</span> </p>
             <button type="button" class="btn btn-outline-success btn-sm" id="up-vote">Up-vote</button>
             <button type="button" class="btn btn-outline-warning btn-sm" id="down-vote">down-vote</button>
+            
           
           
 
@@ -106,7 +110,7 @@
             <h3>What do you think about this recipe?</h3>
             <div class="form-group">
               <label for="Recipe-review">Enter reviews:</label>
-              <textarea class="form-control" id="exampleTextarea" rows="6"></textarea>
+              <textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Please enter your reviews here"></textarea>
             </div><!-- End Div for the Review Section-->
 
             <br><!-- Line Break-->
