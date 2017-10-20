@@ -19,14 +19,16 @@ h1 {
 
 }
 
-#home {
-  background-image: url('../images/curls/curls.png');
-  background-repeat: no-repeat;
-  position: center;
-  background-size: cover;
-  height: 400px;
-  padding-top: 20px;
+/*Heading tags*/
+h1 {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 40px;
+  color: #5DBCD2;
+  font-style: italic;
+  font-weight: bold; 
+  margin-top: 70px;
 }
+
 
 #landing {
   
@@ -39,18 +41,46 @@ h1 {
   
 }
 
+
 /*Home page*/
+#home {
+  background-image: url('../images/eight_horns.png');
+  background-repeat: no-repeat;
+  position: center;
+  background-size: cover;
+  height: 400px;
+  padding-top: 20px;
+}
  .home-row {
    margin: 20px 180px 5px 10px;
  }
 /* home-row class tags*/
 
- .home-para {
+ .home-para, h3 {
   font-family: 'Encode Sans Expanded', sans-serif;
   font-weight: bolder;
-  color: white;
-  
+  color: black;  
 }
+
+
+/*Recipe listing*/
+#recipe-listing {
+  background-image: url('../images/doodles.png');
+  background-repeat: no-repeat;
+  position: center;
+  background-size: cover, cover;
+  height: 400px;
+  padding-top: 20px;
+}
+#reci-pop-search {
+  margin-left: 90px;
+}
+
+#recipe-pop {
+  margin-top: 15px;
+}
+
+
 /*Footer styles*/
 .footer {
   /* add more styles later*/
