@@ -1,4 +1,4 @@
-# More-Recipes! 
+# More-Recipes!                                 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Introduction
 
@@ -27,7 +27,7 @@ To view the UI Template, please use a web browser, preferably, Google Chrome and
 
 * HTML/CSS
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [Twitter Bootstrap](getbootstrap.com) / Font Awesome
+* [Twitter Bootstrap](getbootstrap.com) / [Font Awesome](fontawesome.io/icons/)
 
 ## Authors
 
@@ -35,5 +35,4 @@ To view the UI Template, please use a web browser, preferably, Google Chrome and
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/iidrees/More-Recipes/blob/master/LICENSE) file for details.
