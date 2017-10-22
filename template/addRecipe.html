@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="More Recipe Web Application">
-    <title>Recipe Listing/ Cataog</title>
+    <title>Add Recipe</title>
     <meta name="keywords" content="Videos, Images, Text">
     <meta name="author" content="Idrees Ibraheem">
 
@@ -28,11 +28,9 @@
 
   </head>
   <body id="recipe-listing"><!--Body tag -->
-  <header >
-      
-    
-      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-light bg-light">
-        
+      <!--Header/Navbar -->
+    <header >    
+      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,22 +38,17 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
-           <!-- <% if (user) { %>
-            <li>
-              <p class="navbar-text">
-                <strong>Hi,</strong>
-                <%= user.username %>
-              </p>
-            </li>
-            <% } %>-->
-            <li class="nav-item active">
-              <a class="nav-link" href="home.html"><strong> Homepage</strong> <span class="sr-only">(current)</span></a>
+            <li class="nav-item ">
+              <a class="nav-link" href="home.html"> Homepage </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
-            </li>            
-            <li class="nav-item">
-              <a class="nav-link" href="recipeDetails.html">Recipe Details</a>
+            </li>
+           <li class="nav-item ">
+              <a class="nav-link" href="recipeDetails.html"> Recipe Details</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="addRecipe.html"><strong>Add Recipe</strong><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="favoriteRecipe.html">Favourite Recipe</a>
@@ -66,7 +59,7 @@
           </ul>
         </div>
       </nav>
-    </header><!-- End Header Navbar Section -->
+    </header><!-- End Header/Navbar -->
     <div class="container"><!-- Container for the Header section -->
       <div class="row">
       <div class="text-center">
@@ -87,25 +80,25 @@
               <label for="add-recipe" class="home-para">Add Recipe below:</label>
               <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="Enter your Recipe Here"></textarea>
             </div>
-            <button type="button" class="btn btn-outline-warning btn-sm" id="down-vote">Add Recipe</button>
+            <button type="button" class="btn btn-outline-dark btn-sm" id="add-recipe"><span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>  Add Recipe</button>
           </form>
           
-          <h3>Check the recipes you want to delete below</h3>
+          <h3>Select the recipes you want to delete below</h3>
           <form class="list-group form-group" action="/action_page.php">
-          <input type="checkbox" name="food" value="Recipe"> <a href="recipeDetails.html" class="list-group-item form-control list-group-item-action">Jollod Rice Recipe</a>
-          <input type="checkbox" name="food" value="Recipe"><a href="#" class="list-group-item form-control list-group-item-info">Amala With Gbegiri &amp; Ewedu Recipe </a>
-          <input type="checkbox" name="food" value="Recipe" checked><a href="#" class="list-group-item form-control list-group-item-action">Pounded-Yam &amp; Efo Riro recipe</a>
-          <input type="checkbox" name="food" value="Recipe"><a href="#" class="list-group-item  form-control list-group-item-info">Rice &amp; Beans with Ewedu Recipe</a>
-          <button type="button" class="btn btn-outline-danger btn-sm" id="down-vote">Delete Recipes</button>
-        </form>
+            <input type="checkbox" name="food" value="Recipe"> <a href="recipeDetails.html" class="list-group-item form-control list-group-item-action">Jollod Rice Recipe</a>
+            <input type="checkbox" name="food" value="Recipe"><a href="#" class="list-group-item form-control list-group-item-info">Amala With Gbegiri &amp; Ewedu Recipe </a>
+            <input type="checkbox" name="food" value="Recipe" checked><a href="#" class="list-group-item form-control list-group-item-action">Pounded-Yam &amp; Efo Riro recipe</a>
+            <input type="checkbox" name="food" value="Recipe"><a href="#" class="list-group-item  form-control list-group-item-info">Rice &amp; Beans with Ewedu Recipe</a>
+          </form><br>
+          <button type="button" class="btn btn-outline-danger btn-sm" id="down-vote">Delete Recipes  <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></button>
         </div>
         <div class="col-sm-4"><!-- Start container Modify/View Recipe FORM -->
          <h3>Click the Recipes below to view and/or modify it</h3>
          <div class="list-group"><!-- Start of List of Recipes-->
-            <a href="recipeDetails.html" class="list-group-item active">
+            <a href="recipe.html" class="list-group-item active">
               Ewa Agoyin &amp; Agege Bread Recipe
             </a>
-            <a href="recipeDetails.html" class="list-group-item list-group-item-action">Jollod Rice Recipe</a>
+            <a href="recipe.html" class="list-group-item list-group-item-action">Jollod Rice Recipe</a>
             <a href="#" class="list-group-item list-group-item-info">Amala With Gbegiri &amp; Ewedu Recipe </a>
             <a href="#" class="list-group-item list-group-item-action">Pounded-Yam &amp; Efo Riro recipe</a>
             <a href="#" class="list-group-item list-group-item-info">Rice &amp; Beans with Ewedu Recipe</a>

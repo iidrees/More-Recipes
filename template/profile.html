@@ -28,8 +28,9 @@
 
   </head>
   <body id="profile">
-    <header ><!-- start Header Nav-bar -->
-      <nav class="navbar navbar-expand-lg  navbar-toggleable-md fixed-top navbar-light bg-light">
+        <!--Header/Navbar -->
+    <header >    
+      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,21 +38,13 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
-           <!-- <% if (user) { %>
-            <li>
-              <p class="navbar-text">
-                <strong>Hi,</strong>
-                <%= user.username %>
-              </p>
-            </li>
-            <% } %>-->
-            <li class="nav-item active">
-              <a class="nav-link" href="home.html"><strong> Homepage</strong> <span class="sr-only">(current)</span></a>
+            <li class="nav-item ">
+              <a class="nav-link" href="home.html"> Homepage </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
             </li>
-           <li class="nav-item">
+           <li class="nav-item ">
               <a class="nav-link" href="recipeDetails.html">Recipe Details</a>
             </li>
             <li class="nav-item">
@@ -60,10 +53,14 @@
             <li class="nav-item">
               <a class="nav-link" href="favoriteRecipe.html">Favourite Recipe</a>
             </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="profile.html"><strong> My Profle</strong><span class="sr-only">(current)</span></a>
+            </li>
           </ul>
         </div>
       </nav>
-    </header><!-- END Header Nav-bar -->
+    </header><!-- End Header/Navbar -->
+
     
     <div class="container"><!-- Container for the Header section -->
       

@@ -28,11 +28,9 @@
 
   </head>
   <body id="">
-    <header >
-      
-    
-      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-light bg-light">
-        
+    <!--Header/Navbar -->
+    <header >    
+      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,19 +38,14 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
-           <!-- <% if (user) { %>
-            <li>
-              <p class="navbar-text">
-                <strong>Hi,</strong>
-                <%= user.username %>
-              </p>
-            </li>
-            <% } %>-->
-            <li class="nav-item active">
-              <a class="nav-link" href="home.html"><strong> Homepage</strong> <span class="sr-only">(current)</span></a>
+            <li class="nav-item ">
+              <a class="nav-link" href="home.html"> Homepage </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
+            </li>
+           <li class="nav-item active">
+              <a class="nav-link" href="recipeDetails.html"><strong> Recipe Details</strong><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="addRecipe.html">Add Recipe</a>
@@ -66,9 +59,10 @@
           </ul>
         </div>
       </nav>
-    </header>
+    </header><!-- End Header/Navbar -->
     
-    <div class="container"><!-- Container for the Header section -->
+    <!-- Container for the Header-Title section -->
+    <div class="container">
       <div class="row">
         <div class="text-center">
           <h1>Recipe Details</h1>
@@ -79,8 +73,10 @@
       </div>
     
       <hr >
-    </div><!-- End container for the Header section -->
-    <div class="container" id="recipe-details"><!-- Container div for the Recipe Details, Recipe reviews section section-->
+    </div><!-- End container for the Header-Title section -->
+
+    <!-- Container div for the Recipe Details, Recipe reviews section section-->
+    <div class="container" id="recipe-details">
       <div class="row">
         <div class="col-sm-6"><!-- Div for the Recipe Details section -->
           <h3>Recipe Details</h3>
@@ -89,22 +85,18 @@
             <p class="home-para">Jollof Rice Recipe</p>
           </div>
           <form method="PUT" action="/edit-recipe">
-              <button type="button" class="btn btn-outline-primary btn-sm" id="down-vote">Edit Recipe</button>
+              <button type="button" class="btn btn-outline-primary btn-sm" id="edit-recipe">Edit Recipe</button>
             </form>
           <p class="home-para">Added by: Idrees Kurosaki</p>
           <p class="home-para">Added on: 20th October 2017</p>
           <p class="home-para">Recipe Steps: 10</p>
-          <div>
-            
-          </div>
-            <p class="home-para">Recipe Votes: <span id="count">0</span> </p>
+          
+          <p class="home-para"> <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span> </p>
+            <p class="home-para"> <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span> </p>
             <button type="button" class="btn btn-outline-success btn-sm" id="up-vote">Up-vote</button>
             <button type="button" class="btn btn-outline-warning btn-sm" id="down-vote">down-vote</button>
-            
-          
-          
-
         </div><!-- End div for Recipe Review  section-->
+
         <div class="col-sm-6"><!-- div for the Review Section-->
           <div class="container" id="recipe-review">
             <h3>What do you think about this recipe?</h3>
@@ -125,8 +117,7 @@
                 </div>
                 <p class="mb-1">Please where do you think I can buy all the ingredients you listed in your recipe from</p>
                 <small>Donec id elit non mi porta.</small>
-              </a>
-              
+              </a>              
             </div><!-- End of Recipe Review view section-->
           </div>
         </div><!-- End div for Reviews input and Reviews view section-->
