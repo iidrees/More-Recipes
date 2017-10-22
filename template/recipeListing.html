@@ -28,11 +28,9 @@
 
   </head>
   <body id="recipe-listing"><!--Body tag -->
-  <header >
-      
-    
-      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-light bg-light">
-        
+        <!--Header/Navbar -->
+    <header >    
+      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -40,38 +38,33 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
-           <!-- <% if (user) { %>
-            <li>
-              <p class="navbar-text">
-                <strong>Hi,</strong>
-                <%= user.username %>
-              </p>
+            <li class="nav-item ">
+              <a class="nav-link" href="home.html"> Homepage </a>
             </li>
-            <% } %>-->
             <li class="nav-item active">
-              <a class="nav-link" href="home.html"><strong> Homepage</strong> <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="recipeListing.html"><strong> Recipe Listing/Catalog</strong><span class="sr-only">(current)</span></a>
             </li>
-            
-            <li class="nav-item">
+           <li class="nav-item ">
               <a class="nav-link" href="recipeDetails.html">Recipe Details</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Add Recipe</a>
+              <a class="nav-link" href="addRecipe.html">Add Recipe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Favourite Recipe</a>
+              <a class="nav-link" href="favoriteRecipe.html">Favourite Recipe</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profle</a>
+              <a class="nav-link" href="profile.html">My Profle</a>
             </li>
           </ul>
         </div>
       </nav>
-    </header>
+    </header><!-- End Header/Navbar -->
+  
     <div class="container"><!-- Container for the Header section -->
       <div class="row">
       <div class="text-center">
-        <h1>Recipe Listing/Catalog</h1>
+        <h1>Recipe Listing/Catalog </h1>
         <p class="home-para">
           Recipes are a great instructional-tools that are used to make awesome tasting foods. Below is a list or catalog of the Recipes added. Also you have the opportunity of searching for a Recipe you are in bad need of. 
           While still here, please checkout the most Popular Recipes below.
@@ -83,39 +76,39 @@
     <div class="container" id="recipe-list"><!-- Container div for the Recipe listing, Most popular, and Search section-->
       <div class="row">
         <div class="col-sm-6"><!-- Div for the Recipe Listing section -->
-          <h3>Recipe List/Catalog</h3>
+          <h3>Recipe List/Catalog   <span><i class="fa fa-archive" aria-hidden="true"></i></span></h3>
           <div class="list-group"><!-- Start of List of Recipes-->
             <a href="recipeDetails.html" class="list-group-item active">
-              Ewa Agoyin &amp; Agege Bread Recipe
+              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
             </a>
-            <a href="recipeDetails.html" class="list-group-item list-group-item-action">Jollod Rice Recipe</a>
-            <a href="#" class="list-group-item list-group-item-info">Amala With Gbegiri &amp; Ewedu Recipe </a>
-            <a href="#" class="list-group-item list-group-item-action">Pounded-Yam &amp; Efo Riro recipe</a>
-            <a href="#" class="list-group-item list-group-item-info">Rice &amp; Beans with Ewedu Recipe</a>
-            <a href="#" class="list-group-item list-group-item-action">Bread &amp; Indomie Noodles Recipe</a>
-            <a href="#" class="list-group-item list-group-item-info">Toast Bread Recipe</a>
-            <a href="#" class="list-group-item list-group-item-action">Eba with Efo &amp; Egusi Recipe</a>
-            <a href="#" class="list-group-item list-group-item-info">Fried Rice with Spagetti Recipe</a>
-            <a href="#" class="list-group-item list-group-item-info">Fried Rice with Spagetti Recipe</a>
+            <a href="recipeDetails.html" class="list-group-item list-group-item-action">Jollod Rice Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-info">Amala With Gbegiri &amp; Ewedu Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-action">Pounded-Yam &amp; Efo Riro recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-info">Rice &amp; Beans with Ewedu Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-action">Bread &amp; Indomie Noodles Recipe  <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-info">Toast Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-action">Eba with Efo &amp; Egusi Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-info">Fried Rice with Spagetti Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
+            <a href="#" class="list-group-item list-group-item-info">Fried Rice with Spagetti Recipe  <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
           </div><!-- End section of List of Recipes-->
         </div><!-- End div for Recipe Listing section-->
         <div class="col-sm-4"><!-- div for the Most Popular and the Search Section-->
           <div class="container" id="reci-pop-search">
-            <h3>Recipe Search</h3><br>
+            <h3>Recipe Search  <span><i class="fa fa-search" aria-hidden="true"></i></span></h3><br>
             <div class="form-group row" id="recipe-search" ><!-- Div for the Search Section-->              
               <label for="search" class="col-2 col-form-label">Search</label>
               <div class="col-10">
                 <form  method='POST' action='/search'>
                   <input class="form-control" type="search" placeholder="Enter your recipe search" id="recipe-search">
                   <div >
-                    <button type="submit" class="btn btn-outline-info">Submit</button>
+                    <button type="submit" class="btn btn-outline-info"> <span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>  Submit</button>
                   </div>
                 </form>
               </div>                  
             </div><!-- End Div for the Search Section-->
             
             
-            <h3>Most Popular Recipes</h3>
+            <h3>Popular Recipes <span><i class="fa fa-star" aria-hidden="true"></i></span> </h3>
             <div class="list-group" id="recipe-pop" ><!-- Start of the Most Popular Recipe section-->
               <a href="#" class="list-group-item active">
                 Ewa Agoyin &amp; Agege Bread Recipe <span class="badge badge-danger badge-pill">120 votes</span>

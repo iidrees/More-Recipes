@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="More Recipe Web Application">
-    <title>Recipe Details</title>
+    <title>My Profile</title>
     <meta name="keywords" content="Videos, Images, Text">
     <meta name="author" content="Idrees Ibraheem">
 
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
   </head>
-  <body id="">
-    <!--Header/Navbar -->
+  <body id="profile">
+        <!--Header/Navbar -->
     <header >    
       <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,8 +44,8 @@
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
             </li>
-           <li class="nav-item active">
-              <a class="nav-link" href="recipeDetails.html"><strong> Recipe Details</strong><span class="sr-only">(current)</span></a>
+           <li class="nav-item ">
+              <a class="nav-link" href="recipeDetails.html">Recipe Details</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="addRecipe.html">Add Recipe</a>
@@ -53,63 +53,47 @@
             <li class="nav-item">
               <a class="nav-link" href="favoriteRecipe.html">Favourite Recipe</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="profile.html">My Profle</a>
+            <li class="nav-item active">
+              <a class="nav-link" href="profile.html"><strong> My Profle</strong><span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </div>
       </nav>
     </header><!-- End Header/Navbar -->
+
     
-    <!-- Container for the Header-Title section -->
-    <div class="container">
-      <div class="row">
+    <div class="container"><!-- Container for the Header section -->
+      
         <div class="text-center">
-          <h1>Recipe Details</h1>
-          <p class="home-para">
-            Below is the Recipe Detail of your Favourite Recipe
-          </p>
+          <h1 class="text-center">Fuzzy-Brow's Profile</h1>          
         </div>
-      </div>
-    
       <hr >
-    </div><!-- End container for the Header-Title section -->
-
-    <!-- Container div for the Recipe Details, Recipe reviews section section-->
-    <div class="container" id="recipe-details">
-      <div class="row">
-        <div class="col-sm-6"><!-- Div for the Recipe Details section -->
-          <h3>Recipe Details</h3>
-          <div class="col-sm-4 home-row" >
-            <img src="./images/homepage/recipe-catalog.png" class="img-thumbnail" alt="Recipe Listing/Catalog">
-            <p class="home-para">Jollof Rice Recipe</p>
+    </div><!-- End container for the Header-body section -->
+    <section><!-- Bio Section -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 home-row">
+            <img src="./images/wierd-brows.jpg" alt="Fuzzy brows" height="230px">            
           </div>
-          <form method="PUT" action="/edit-recipe">
-              <button type="button" class="btn btn-outline-primary btn-sm" id="edit-recipe">Edit Recipe</button>
-            </form>
-          <p class="home-para">Added by: Idrees Kurosaki</p>
-          <p class="home-para">Added on: 20th October 2017</p>
-          <p class="home-para">Recipe Steps: 10</p>
-          
-          <p class="home-para"> <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span> </p>
-            <p class="home-para"> <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span> </p>
-            <button type="button" class="btn btn-outline-success btn-sm" id="up-vote">Up-vote</button>
-            <button type="button" class="btn btn-outline-warning btn-sm" id="down-vote">down-vote</button>
-        </div><!-- End div for Recipe Review  section-->
-
-        <div class="col-sm-6"><!-- div for the Review Section-->
-          <div class="container" id="recipe-review">
-            <h3>What do you think about this recipe?</h3>
-            <div class="form-group">
-              <label for="Recipe-review">Enter reviews:</label>
-              <textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Please enter your reviews here"></textarea>
-            </div><!-- End Div for the Review Section-->
-
-            <br><!-- Line Break-->
-            <hr>
+          <div class="col-sm-4 home-row">
+            <p class="home-para">Name: Fuzzy Brows</p>
+            <p class="home-para">Email: fuzzybrows@fuzzy.com</p>
+            <p class="home-para">Joined At: 20th October, 2017</p>
+            <p class="home-para">Phone: 90389080930</p>
+            <p class="home-para">Recipes Added: 200</p>
+            <p class="home-para">Recipes Reviewed: 3000</p>
             
-            <h3>Latest Reviews For This Recipe</h3><!-- Recipe review view section-->
-            <div class="list-group"><!-- Start of Recipe Review view section-->
+          </div>
+        </div>        
+      </div>
+    </section><!-- End Bio Section -->
+    <hr>
+    <section><!-- Other information section -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4 home-row">
+           <h3>Recipe Reviews Posted</h3>
+           <div class="list-group"><!-- Start of Recipe Review Posted section-->
               <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
                 <div class="d-flex w-100 justify-content-between">
                   <h5 class="mb-1">Jollof Rice Review</h5>
@@ -117,20 +101,33 @@
                 </div>
                 <p class="mb-1">Please where do you think I can buy all the ingredients you listed in your recipe from</p>
                 <small>Donec id elit non mi porta.</small>
-              </a>              
-            </div><!-- End of Recipe Review view section-->
+              </a>
+              
+            </div><!-- End of Recipe Review Posted view section-->
           </div>
-        </div><!-- End div for Reviews input and Reviews view section-->
-      </div>      
-    </div>
+          <div class="col-sm-4 home-row">
+            <h3>Recipe Added</h3>
+          <div class="list-group"><!-- Start of List of Recipes Added Section-->
+            <a href="recipeDetails.html" class="list-group-item list-group-item-action">Jollod Rice Recipe</a>
+            <a href="#" class="list-group-item list-group-item-info">Amala With Gbegiri &amp; Ewedu Recipe </a>
+            <a href="#" class="list-group-item list-group-item-action">Pounded-Yam &amp; Efo Riro recipe</a>
+          </div><!-- End section of List of Recipes Added Section-->            
+          </div>
+        </div>        
+      </div><!-- End of container -->
+    </section><!-- End of Other information Section -->
+
+
     <!--
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
     <script src="js/more-recipe.js"></script><!-- script file imported for the implementation of the up and down votes -->
-     <div class="footer">
-        <p id="footer-para" class="text-center">
-          <strong>Made with <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
-      </div>
+    
+      <div class="footer ">
+          <p id="footer-para" class="text-center">
+            <strong>Made with <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
+        </div>
+    
   </body>
 </html>

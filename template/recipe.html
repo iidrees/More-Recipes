@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="More Recipe Web Application">
-    <title>Recipe Details</title>
+    <title>Recipe</title>
     <meta name="keywords" content="Videos, Images, Text">
     <meta name="author" content="Idrees Ibraheem">
 
@@ -44,8 +44,8 @@
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
             </li>
-           <li class="nav-item active">
-              <a class="nav-link" href="recipeDetails.html"><strong> Recipe Details</strong><span class="sr-only">(current)</span></a>
+           <li class="nav-item ">
+              <a class="nav-link" href="recipeDetails.html">Recipe Details</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="addRecipe.html">Add Recipe</a>
@@ -65,9 +65,9 @@
     <div class="container">
       <div class="row">
         <div class="text-center">
-          <h1>Recipe Details</h1>
+          <h1>Recipe</h1>
           <p class="home-para">
-            Below is the Recipe Detail of your Favourite Recipe
+            Recipe for the popular Nigerian Party Jollof Rice
           </p>
         </div>
       </div>
@@ -79,12 +79,34 @@
     <div class="container" id="recipe-details">
       <div class="row">
         <div class="col-sm-6"><!-- Div for the Recipe Details section -->
-          <h3>Recipe Details</h3>
-          <div class="col-sm-4 home-row" >
-            <img src="./images/homepage/recipe-catalog.png" class="img-thumbnail" alt="Recipe Listing/Catalog">
-            <p class="home-para">Jollof Rice Recipe</p>
+          <div class="col-sm-8 home-row" >
+            <h4>ingredients <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></h4>
+            <ol>
+              <li>3¾ cups (750g) long grain parboiled rice</li>
+              <li>2 cups Tomato Stew</li>
+              <li>Chicken (whole chicken, drumsticks or chicken breast)</li>
+              <li>Pepper and salt (to taste)</li>
+              <li>2 medium onions</li>
+              <li>3 Knorr cubes</li>
+              <li>2 teaspoons thyme</li>
+              <li>2 teaspoons curry powder (Nigerian curry powder)</li>
+            </ol>
+
+            <h4>Making a Family size Pot <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></h4>
+            <ol>
+              <li>Rinse the rice to get rid of some starch then parboil: Bring the rice to a boil with 2 cups of the stock (or water) then cook on medium heat, covered, about 12 to 15 minutes. Rice will still be hard, a bit "white" (not translucent) and only partly cooked. Remove from the heat and set aside.</li>
+              <li>In a blender, combine tomatoes, red poblano (or bell) peppers, chopped onions, and chile pepper; blend till smooth, about a minute or two. You should have roughly 4 cups of blended mix.</li>
+              <li>In a large pan, heat oil and add sliced onion. Season with a pinch of salt, stir-fry for a minute or two, then add the tomato paste, curry powder, dried thyme and bay leaves. Stir for another 2 minutes. Add the blended tomato-pepper-chile mixture, stir, and set on medium heat for 10 to 12 minutes so the mix cooks and the raw taste of the tomatoes is gone. You might feel your eyes sting with onions</li>
+              <li>Add 2 cups of the stock to the cooked tomato sauce, 1 teaspoon of butter, and then add the parboiled rice. Stir, cover with a double piece of foil/ baking or parchment paper and put a lid on the pan. This will seal in the steam and lock in the flavour. Cook on low heat for 15 minutes. Stir again, adjust seasoning to taste, then add the remaining 1 cup of stock. Stir, cover with foil/ baking or parchment paper and let cook for another 15 to 20 minutes, stirring every 10 minutes or so to prevent burning and till the rice is cooked and the grains are separate.</li>
+              <li>Don't be afraid to add some more stock or water—by the half-cup, stirring gently—if you find it a bit hard. When it’s cooked, take off heat and remove the cover of the pot. Put a tea cloth over the top and leave for half an hour or more, till ready to serve.</li>
+              <li>To make Party Rice, you'll need one more step. Now Party Rice is essentially Smoky Jollof Rice, traditionally cooked over an open fire. However, you can achieve the same results on the stove top. Here's how: Once the rice is cooked, turn up the heat with the lid on and leave to "burn" for 3 to 5 minutes. You'll hear the rice crackled and snap and it will smell toasted. Turn off the heat and leave with the lid on to "rest" till ready to serve. The longer the lid stays on, the smokier. Let the party begin!</li>
+            </ol>
           </div>
-          <form method="PUT" action="/edit-recipe">
+        </div><!-- End div for Recipe Review  section-->
+
+        <div class="col-sm-3"><!-- div for the Review Section-->
+          <img src="./images/homepage/recipe-catalog.png" class="img-thumbnail" alt="Recipe Listing/Catalog">
+         <form method="PUT" action="/edit-recipe">
               <button type="button" class="btn btn-outline-primary btn-sm" id="edit-recipe">Edit Recipe</button>
             </form>
           <p class="home-para">Added by: Idrees Kurosaki</p>
@@ -92,37 +114,13 @@
           <p class="home-para">Recipe Steps: 10</p>
           
           <p class="home-para"> <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span> </p>
-            <p class="home-para"> <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span> </p>
-            <button type="button" class="btn btn-outline-success btn-sm" id="up-vote">Up-vote</button>
-            <button type="button" class="btn btn-outline-warning btn-sm" id="down-vote">down-vote</button>
-        </div><!-- End div for Recipe Review  section-->
+          <p class="home-para"> <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span> </p>
+          <button type="button" class="btn btn-outline-success btn-sm" id="up-vote">Up-vote</button>
+          <button type="button" class="btn btn-outline-warning btn-sm" id="down-vote">down-vote</button>
 
-        <div class="col-sm-6"><!-- div for the Review Section-->
-          <div class="container" id="recipe-review">
-            <h3>What do you think about this recipe?</h3>
-            <div class="form-group">
-              <label for="Recipe-review">Enter reviews:</label>
-              <textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Please enter your reviews here"></textarea>
-            </div><!-- End Div for the Review Section-->
-
-            <br><!-- Line Break-->
-            <hr>
-            
-            <h3>Latest Reviews For This Recipe</h3><!-- Recipe review view section-->
-            <div class="list-group"><!-- Start of Recipe Review view section-->
-              <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">Jollof Rice Review</h5>
-                  <small>3 days ago</small>
-                </div>
-                <p class="mb-1">Please where do you think I can buy all the ingredients you listed in your recipe from</p>
-                <small>Donec id elit non mi porta.</small>
-              </a>              
-            </div><!-- End of Recipe Review view section-->
-          </div>
-        </div><!-- End div for Reviews input and Reviews view section-->
-      </div>      
+        </div>      
     </div>
+  </div>
     <!--
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
@@ -130,7 +128,7 @@
     <script src="js/more-recipe.js"></script><!-- script file imported for the implementation of the up and down votes -->
      <div class="footer">
         <p id="footer-para" class="text-center">
-          <strong>Made with <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
+          <strong>Made with <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="blue"><i class="fa fa-envelope" aria-hidden="true"></i></span> </a></strong></p>
       </div>
   </body>
 </html>
