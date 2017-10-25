@@ -73,50 +73,131 @@
       </div>
       <hr >
     </div><!-- End container for the Header section -->
-    <div class="container" id="recipe-list"><!-- Container div for the Recipe listing, Most popular, and Search section-->
+    <div class="container">
       <div class="row">
-        <div class="col-sm-6"><!-- Div for the Recipe Listing section -->
-          <h3>Recipe List/Catalog   <span><i class="fa fa-archive" aria-hidden="true"></i></span></h3>
-          <div class="list-group"><!-- Start of List of Recipes-->
-            <a href="recipeDetails.html" class="list-group-item active">
-              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
-            </a>
-            <a href="recipeDetails.html" class="list-group-item list-group-item-action">Jollod Rice Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-info">Amala With Gbegiri &amp; Ewedu Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-action">Pounded-Yam &amp; Efo Riro recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-info">Rice &amp; Beans with Ewedu Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-action">Bread &amp; Indomie Noodles Recipe  <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-info">Toast Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-action">Eba with Efo &amp; Egusi Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-info">Fried Rice with Spagetti Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-            <a href="#" class="list-group-item list-group-item-info">Fried Rice with Spagetti Recipe  <span><i class="fa fa-cutlery" aria-hidden="true"></i></span></a>
-          </div><!-- End section of List of Recipes-->
-        </div><!-- End div for Recipe Listing section-->
-        <div class="col-sm-4"><!-- div for the Most Popular and the Search Section-->
-          <div class="container" id="reci-pop-search">
-            <h3>Recipe Search  <span><i class="fa fa-search" aria-hidden="true"></i></span></h3><br>
-            <div class="form-group row" id="recipe-search" ><!-- Div for the Search Section-->              
-              <label for="search" class="col-2 col-form-label">Search</label>
-              <div class="col-10">
+        <div class="col-sm-8">
+          <h3>Recipe Search  <span><i class="fa fa-search" aria-hidden="true"></i></span></h3><br>       
+        </div>              
+      </div>  
+      <div class="row">
+        <div class="col-sm-8">
                 <form  method='POST' action='/search'>
-                  <input class="form-control" type="search" placeholder="Enter your recipe search" id="recipe-search">
-                  <div >
-                    <button type="submit" class="btn btn-outline-info"> <span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>  Submit</button>
-                  </div>
+                  <input id="recipe-search" type="text" name="search" placeholder="Enter Your Search Here...">
                 </form>
               </div>                  
-            </div><!-- End Div for the Search Section-->
-            
+            </div><!-- End Div for the Search Section-->        
+        
+      </div>    
+    </div>
+    
+    <div class="container" id="recipe-list"><!-- Container div for the Recipe listing, Most popular, and Search section-->
+      <div class="row">
+        <div class="col-sm-8"><!-- Div for the Recipe Listing section -->
+          <h3>Recipe List/Catalog   <span><i class="fa fa-archive" aria-hidden="true"></i></span></h3>
+          <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <a href="recipeDetails.html" class="list-group-item ">
+              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+            </a>
+
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <a href="recipeDetails.html" class="list-group-item ">
+              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+            </a>
+
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <a href="recipeDetails.html" class="list-group-item ">
+              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+            </a>
+
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+    
+            <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <a href="recipeDetails.html" class="list-group-item ">
+              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+            </a>
+
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <a href="recipeDetails.html" class="list-group-item ">
+              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+            </a>
+
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+              <div class="card-block">
+                <h4 class="card-title">Card title</h4>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <a href="recipeDetails.html" class="list-group-item ">
+              Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+            </a>
+
+              </div>
+              <div class="card-footer">
+                <small class="text-muted">Last updated 3 mins ago</small>
+              </div>
+            </div>
+          </div>
+        </div><!-- End div for Recipe Listing section-->
+
+
+        <div class="col-sm-3"><!-- div for the Most Popular and the Search Section-->
+          <div class="container" id="reci-pop-search">          
             
             <h3>Popular Recipes <span><i class="fa fa-star" aria-hidden="true"></i></span> </h3>
             <div class="list-group" id="recipe-pop" ><!-- Start of the Most Popular Recipe section-->
-              <a href="#" class="list-group-item active">
+              <a href="#" class="list-group-item ">
                 Ewa Agoyin &amp; Agege Bread Recipe <span class="badge badge-danger badge-pill">120 votes</span>
               </a>
-              <a href="#" class="list-group-item list-group-item-action justify-content-between">Jollof Rice Recipe <span class="badge badge-danger badge-pill">119 votes</span></a>
-              <a href="#" class="list-group-item list-group-item-success">Pounded-Yam &amp; Efo Riro Recipe<span class="badge badge-danger badge-pill">98 votes</span></a>
-              <a href="#" class="list-group-item list-group-item-action">Toast Bread Recipe<span class="badge badge-danger badge-pill">78 votes</span></a>
-              <a href="#" class="list-group-item list-group-item-success">Rice &amp; Beans with Ewedu Recipe<span class="badge badge-danger badge-pill">50 votes</span></a>
+              <a href="#" class="list-group-item list-group-item">Jollof Rice Recipe <span class="badge badge-danger badge-pill">119 votes</span></a>
+              <a href="#" class="list-group-item list-group-item">Pounded-Yam &amp; Efo Riro Recipe<span class="badge badge-danger badge-pill">98 votes</span></a>
+              <a href="#" class="list-group-item list-group-item">Toast Bread Recipe<span class="badge badge-danger badge-pill">78 votes</span></a>
+              <a href="#" class="list-group-item list-group-item">Rice &amp; Beans with Ewedu Recipe<span class="badge badge-danger badge-pill">50 votes</span></a>
               <!--<a href="#" class="list-group-item list-group-item-action">Bread &amp; Indomie Noodles Recipe<span class="badge badge-danger badge-pill">44 votes</span></a>-->
             </div><!-- ENd of Most popular section-->
           </div>
@@ -133,7 +214,9 @@
     
      <div class="footer"><!-- Footer-->
         <p id="footer-para" class="text-center">
-          <strong>Made with <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
+          <strong>Made with  <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by <br> Idrees Ibraheem &copy; 2017</strong> <br><strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
       </div>
+      <footer>
+</footer>
   </body>
 </html>
