@@ -1,0 +1,16 @@
+{
+  "name": "server-side",
+  "version": "1.0.0",
+  "description": "An API Implmentation of the More-Recipes specs",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register"
+  },
+  "keywords": [
+    "Node",
+    "API",
+    "Express"
+  ],
+  "author": "Idrees Ibraheem",
+  "license": "MIT"
+}
