@@ -27,52 +27,107 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>-->
 
   </head>
-  <body id="signup-page">
-    <section >
-      <div class="container"><!-- Container div for FORMS -->
-        <div class="row"><!-- Container row for FORMS -->
-          <div class="col-sm-5">
-            <div class="well">
-              <form class="form-horizontal" method='POST' action='home.html'>
-                <div class="form-group">
-                  <label class="control-label col-sm-5" for="full_name">Full Name:</label>
-                  <div class="col-sm-12">
-                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Enter first name ">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-3" for="email">Email:</label>
-                  <div class="col-sm-9">
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="control-label col-sm-3"  for="pwd">Password: </label>
-                  <div class="col-sm-9">
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" >
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-3 col-sm-9">
-                    <button type="submit" class="btn btn-default">Submit</button>
-                  </div>
-                </div>
-              </form>  
+  <body id="signup-page"><div class="container">
+    <form class="form-horizontal" role="form" method="POST" action="/register">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>New Users Sign-up Below</h2>
+                <hr>
             </div>
-          </div>
-      </div>
-    </div>
-      </div>
-    </section>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="name">Name</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                        <input type="text" name="name" class="form-control" id="name"
+                               placeholder="Damilola Naruto" required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put name validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="email">E-Mail Address</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input type="text" name="email" class="form-control" id="email"
+                               placeholder="you@example.com" required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-control-feedback">
+                        <span class="text-danger align-middle">
+                            <!-- Put e-mail validation error messages here -->
+                        </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group has-danger">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                        <input type="password" name="password" class="form-control" id="password"
+                               placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 field-label-responsive">
+                <label for="password">Confirm Password</label>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem">
+                            <i class="fa fa-repeat"></i>
+                        </div>
+                        <input type="password" name="password-confirmation" class="form-control"
+                               id="password-confirm" placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success"><i class="fa fa-user-plus"></i>Sign-up</button>
+            </div>
+        </div>
+    </form>
+</div>
       
     <!--
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
     
-     <div class="footer">
-        <p id="footer-para" class="text-center">
-          <strong>Made with <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong> <strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
-      </div>
+     <div style="margin-bottom:20px">
+      
+    </div>
+    <div class="footer"><!-- Footer-->
+      <p id="footer-para" class="text-center">
+        <strong>Made with  <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span> <br> by Idrees Ibraheem &copy; 2017</strong> <br><strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
+    </div>  
   </body>
 </html>
