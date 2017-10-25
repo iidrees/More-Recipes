@@ -19,8 +19,15 @@ h1 {
 
 /* signup, signin-page*/
 #signin-page, #signup-page {
-  background: url('../images/eight_horns.png');
+  background: url('../images/curls/curl.png');
+  background-color: white;
   
+}
+@media(min-width: 768px) {
+  .field-label-responsive {
+    padding-top: .5rem;
+    text-align: right;
+  }
 }
 
 
@@ -58,6 +65,19 @@ h1 {
   margin-left: 90px;
 }
 
+input[type=text] {
+    width: 235px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    border-color: grey;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 100%;
+    border-color: green;
+}
+
 #recipe-pop {
   margin-top: 15px;
 }
@@ -90,9 +110,8 @@ ol li {
   font-weight: bold; 
 }
 /*Footer styles*/
-.footer {
-  /* add more styles later*/
-}
+
+
 #footer-para {
   font-family: 'Encode Sans Expanded', sans-serif;
   font-size: 15px;
