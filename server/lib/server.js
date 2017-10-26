@@ -26,6 +26,9 @@ app.get('/home', (req, res) => {
 });
 
 
+app.get('/api/recipes', (req, res) => {
+  GetRecipes.getRecipes(req, res);
+});
 
 
 
