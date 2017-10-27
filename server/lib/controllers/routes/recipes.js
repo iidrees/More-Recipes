@@ -25,3 +25,45 @@ export class GetRecipes {
 }
 
 
+
+// PORT Class
+
+export class PostRecipe {
+  static postRecipe(req, res) {
+      console.log(req.body.name);
+
+      let newRecipe = {
+      id : req.body.id,
+      name: req.body.name,
+      email : req.body.email,
+      createdAt: new Date(),
+      recipeTitle: req.body.recipetitle,
+      recipes: [{
+        steps: req.body.steps
+      }],
+      reviews: [{
+        user1: req.body.reviews,
+        user2: req.body.reviews
+      }],
+      upvotes: req.body.upvotes
+    }
+    
+    fs.readFile('recipe.json', (err, data) => {
+      if (err) throw err;
+      const rec = JSON.parse(data);
+      //const arrRec = [];
+      //arrRec = rec;
+
+      console.log(newRecipe);
+      const newData = JSON.stringify(newRecipe, null, 2)
+      //arrRec.push(newData);
+      console.log('New data turned to JSON', newData);
+      fs.writeFile('recepe.json', newData, (err) => {
+        if (err) throw err;
+        res.status(201).send(newData);
+      });
+    });
+  }
+}
+
+
