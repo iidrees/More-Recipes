@@ -6,17 +6,16 @@ import fs from 'fs';
  * A class that gets recipes and returns it
  * @constructor
  * @return {object} of json objects.
- * 
  */
 export class GetRecipes {
   /**
    * stores recipes from the RecipeService
+   * @override
    */
   static getRecipes(req, res) {
-
     fs.readFile('recipe.json', (err, data) => {
       if (err) throw err;
-      let rec = JSON.parse(data);
+      const rec = JSON.parse(data);
       console.log(rec);
       res.send(rec);
     });
@@ -24,18 +23,16 @@ export class GetRecipes {
   }
 }
 
-
-
 // PORT Class
 
 export class PostRecipe {
   static postRecipe(req, res) {
-      console.log(req.body.name);
+    console.log(req.body.name);
 
-      let newRecipe = {
-      id : req.body.id,
+    const newRecipe = {
+      id: req.body.id,
       name: req.body.name,
-      email : req.body.email,
+      email: req.body.email,
       createdAt: new Date(),
       recipeTitle: req.body.recipetitle,
       recipes: [{
@@ -46,24 +43,19 @@ export class PostRecipe {
         user2: req.body.reviews
       }],
       upvotes: req.body.upvotes
-    }
-    
+    };
     fs.readFile('recipe.json', (err, data) => {
-      if (err) throw err;
-      const rec = JSON.parse(data);
-      //const arrRec = [];
-      //arrRec = rec;
-
-      console.log(newRecipe);
-      const newData = JSON.stringify(newRecipe, null, 2)
-      //arrRec.push(newData);
-      console.log('New data turned to JSON', newData);
-      fs.writeFile('recepe.json', newData, (err) => {
+      if (err) {
+        console.log(err);
+      }
+      const newRec = JSON.parse(data);
+      newRec.push(newRecipe);
+      const json = JSON.stringify(newRec, null, 2);
+      fs.writeFile('recipe.json', json, (err) => {
         if (err) throw err;
-        res.status(201).send(newData);
+        res.status(201).send(json);
       });
     });
   }
 }
-
 

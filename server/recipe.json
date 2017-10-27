@@ -1,13 +1,41 @@
-{
-  "id": "2",
-  "name": "Hokage Narutoklasjdk",
-  "email": "narutokun@kun.com",
-  "createdAt": "2017-10-26T15:58:01.365Z",
-  "recipeTitle": "Jollof Rice",
-  "recipes": [
-    {}
-  ],
-  "reviews": [
-    {}
-  ]
-}
+[
+  {
+    "id": "1",
+    "name": "Hokage Narutoklasjdk",
+    "email": "narutokun@kun.com",
+    "createdAt": "2017-10-27T08:03:59.915Z",
+    "recipeTitle": "Jollof Rice",
+    "recipes": [
+      {}
+    ],
+    "reviews": [
+      {}
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Hokage Narutoklasjdk",
+    "email": "narutokun@kun.com",
+    "createdAt": "2017-10-27T09:06:41.549Z",
+    "recipeTitle": "Jollof Rice",
+    "recipes": [
+      {}
+    ],
+    "reviews": [
+      {}
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Hokage Narutoklasjdk",
+    "email": "narutokun@kun.com",
+    "createdAt": "2017-10-27T09:07:07.662Z",
+    "recipeTitle": "Jollof Rice",
+    "recipes": [
+      {}
+    ],
+    "reviews": [
+      {}
+    ]
+  }
+]

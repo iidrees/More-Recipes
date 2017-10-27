@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 import newRecipe from './model/recipesService';
 import { GetRecipes } from './controllers/routes/recipes';
 import { PostRecipe } from './controllers/routes/recipes';
+import { DelRecipe } from './controllers/routes/recipes';
 
 
 const app = express(); // initialise project
