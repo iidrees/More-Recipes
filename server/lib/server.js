@@ -7,6 +7,7 @@ import newRecipe from './model/recipesService';
 import { GetRecipes } from './controllers/routes/recipes';
 import { PostRecipe } from './controllers/routes/recipes';
 import { DelRecipe } from './controllers/routes/recipes';
+import { PostReview } from './controllers/routes/recipes';
 
 
 const app = express(); // initialise project
@@ -33,6 +34,9 @@ app.get('/api/recipes', (req, res) => {
 
 app.post('/api/recipes', (req, res) => {
   PostRecipe.postRecipe(req, res);
+});
+app.post('/api/recipes/:id', (req, res) => {
+  PostReview.postReview(req, res);
 });
 
 app.delete('/api/recipes/:id', (req, res) => {
