@@ -35,7 +35,9 @@ app.post('/api/recipes', (req, res) => {
   PostRecipe.postRecipe(req, res);
 });
 
-
+app.delete('/api/recipes/:id', (req, res) => {
+  DelRecipe.deleteRecipe(req, res);
+});
 
 app.listen(port, () => {
   console.log(app.get('env'));
