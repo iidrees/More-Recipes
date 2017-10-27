@@ -4,10 +4,7 @@ import fs from 'fs';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import newRecipe from './model/recipesService';
-import { GetRecipes } from './controllers/routes/recipes';
-import { PostRecipe } from './controllers/routes/recipes';
-import { DelRecipe } from './controllers/routes/recipes';
-import { PostReview } from './controllers/routes/recipes';
+import { GetRecipes, PostRecipe, DelRecipe, PostReview, UpdateRecipe } from './controllers/routes/recipes';
 
 
 const app = express(); // initialise project
@@ -31,12 +28,14 @@ app.get('/home', (req, res) => {
 app.get('/api/recipes', (req, res) => {
   GetRecipes.getRecipes(req, res);
 });
-
 app.post('/api/recipes', (req, res) => {
   PostRecipe.postRecipe(req, res);
 });
 app.post('/api/recipes/:id', (req, res) => {
   PostReview.postReview(req, res);
+});
+app.put('/api/recipes/:id', (req, res) => {
+  UpdateRecipe.updateRecipe(req, res);
 });
 
 app.delete('/api/recipes/:id', (req, res) => {
