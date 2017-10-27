@@ -5,7 +5,7 @@ import fs from 'fs';
 /**
  * A class that gets recipes and returns it
  * @constructor
- * @return {array} of json objects.
+ * @return {object} of json objects.
  * 
  */
 export class GetRecipes {
