@@ -27,8 +27,6 @@ export class GetRecipes {
 
 export class PostRecipe {
   static postRecipe(req, res) {
-    console.log(req.body.name);
-
     const newRecipe = {
       id: req.body.id,
       name: req.body.name,
@@ -48,6 +46,7 @@ export class PostRecipe {
       if (err) {
         console.log(err);
       }
+      // if ()
       const newRec = JSON.parse(data);
       newRec.push(newRecipe);
       const json = JSON.stringify(newRec, null, 2);
@@ -98,6 +97,29 @@ export class PostReview {
           fs.writeFile('recipe.json', json, (err) => {
             if (err) throw err;
             res.status(201).send({ message: 'Reviews Added.' });
+          });
+        }
+      }
+    });
+  }
+}
+
+// PUT Recipe Class
+
+export class UpdateRecipe {
+  static updateRecipe(req, res) {
+    const { id } = req.params;
+    const { recipe, step } = req.body;
+    fs.readFile('recipe.json', (err, data) => {
+      if (err) throw err;
+      const obj = JSON.parse(data);
+      for (let i = 0; i < obj.length; i += 1) {
+        if (id === obj[i].id) {
+          obj[i].recipes[i][step] = { step: recipe };
+          const json = JSON.stringify(obj);
+          fs.writeFile('recipe.json', json, (err) => {
+            if (err) throw err;
+            res.status(201).send(obj);
           });
         }
       }
