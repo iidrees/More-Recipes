@@ -13,4 +13,5 @@ server/node_modules/
 server/dist
 server/lib/model/
 server/recepe.json
+server/recipe.json
 .github/
