@@ -25,9 +25,13 @@ app.get('/home', (req, res) => {
   res.status(200).send({ message: 'Hello bro' });
 });
 
-
+// Recipe Endpoint
 app.get('/api/recipes', (req, res) => {
   GetRecipes.getRecipes(req, res);
+});
+
+app.post('/api/recipes', (req, res) => {
+  PostRecipe.postRecipe(req, res);
 });
 
 
