@@ -23,7 +23,7 @@ export class GetRecipes {
   }
 }
 
-// POST Class
+// POST Recipe Class
 
 export class PostRecipe {
   static postRecipe(req, res) {
@@ -62,7 +62,7 @@ export class PostRecipe {
 // DELETE Class
 export class DelRecipe {
   static deleteRecipe(req, res) {
-    const id = req.params.id;
+    const { id } = req.params;
     console.log(id);
     fs.readFile('recipe.json', (err, data) => {
       if (err) throw err;
@@ -82,3 +82,25 @@ export class DelRecipe {
 }
 
 
+// POST REVIEW Class
+
+export class PostReview {
+  static postReview(req, res) {
+    const { id } = req.params;
+    const { reviews } = req.body;
+    fs.readFile('recipe.json', (err, data) => {
+      if (err) throw err;
+      const obj = JSON.parse(data);
+      for (let i = 0; i < obj.length; i += 1) {
+        if (id === obj[i].id) {
+          obj[i].reviews.push({ id: reviews });
+          const json = JSON.stringify(obj, null, 2);
+          fs.writeFile('recipe.json', json, (err) => {
+            if (err) throw err;
+            res.status(201).send({ message: 'Reviews Added.' });
+          });
+        }
+      }
+    });
+  }
+}
