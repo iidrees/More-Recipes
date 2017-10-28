@@ -13,11 +13,25 @@ export class GetRecipes {
    * @override
    */
   static getRecipes(req, res) {
-    fs.readFile('recipe.json', (err, data) => {
+    const { sort, order } = req.query;
+    fs.readFile('recipe.json', (err, data) => {      
       if (err) throw err;
       const rec = JSON.parse(data);
+      let upvotes;
+
+      if ( sort === 'upvotes' && order === 'des') {
+        let max;
+        for (let i = 0; i < rec.length; i += 1) {
+          if (!max || parseInt(rec[i].upvotes, 10) > parseInt(max.upvotes, 10)) {
+            max = rec[i];
+          }
+          upvotes = max;
+        }
+        console.log(`This is the number of upvotes ${upvotes}`);
+        res.status(200).send(upvotes);
+      }
       console.log(rec);
-      res.send(rec);
+      res.status(200).send(rec);
     });
     console.log('This is right under the fs system');
   }
@@ -115,8 +129,8 @@ export class UpdateRecipe {
       const obj = JSON.parse(data);
       for (let i = 0; i < obj.length; i += 1) {
         if (id === obj[i].id) {
-          obj[i].recipes[i][step] = { step: recipe };
-          const json = JSON.stringify(obj);
+          obj[i].recipes[i] = { step: recipe };
+          const json = JSON.stringify(obj, null, 2);
           fs.writeFile('recipe.json', json, (err) => {
             if (err) throw err;
             res.status(201).send(obj);

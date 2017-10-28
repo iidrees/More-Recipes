@@ -3,8 +3,13 @@ import express from 'express';
 import fs from 'fs';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-import newRecipe from './model/recipesService';
-import { GetRecipes, PostRecipe, DelRecipe, PostReview, UpdateRecipe } from './controllers/routes/recipes';
+import {
+  GetRecipes,
+  PostRecipe,
+  DelRecipe,
+  PostReview,
+  UpdateRecipe
+} from './controllers/routes/recipes';
 
 
 const app = express(); // initialise project
@@ -20,9 +25,6 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 
 // routes
-app.get('/home', (req, res) => {
-  res.status(200).send({ message: 'Hello bro' });
-});
 
 // Recipe Endpoint
 app.get('/api/v1/recipes', (req, res) => {
