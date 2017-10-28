@@ -25,20 +25,20 @@ app.get('/home', (req, res) => {
 });
 
 // Recipe Endpoint
-app.get('/api/recipes', (req, res) => {
+app.get('/api/v1/recipes', (req, res) => {
   GetRecipes.getRecipes(req, res);
 });
-app.post('/api/recipes', (req, res) => {
+app.post('/api/v1/recipes', (req, res) => {
   PostRecipe.postRecipe(req, res);
 });
-app.post('/api/recipes/:id', (req, res) => {
+app.post('/api/v1/recipes/:id', (req, res) => {
   PostReview.postReview(req, res);
 });
-app.put('/api/recipes/:id', (req, res) => {
+app.put('/api/v1/recipes/:id', (req, res) => {
   UpdateRecipe.updateRecipe(req, res);
 });
 
-app.delete('/api/recipes/:id', (req, res) => {
+app.delete('/api/v1/recipes/:id', (req, res) => {
   DelRecipe.deleteRecipe(req, res);
 });
 
