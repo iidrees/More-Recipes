@@ -27,13 +27,16 @@ app.use(bodyParser.json({ type: 'application/json' }));
 // routes
 
 // Recipe Endpoint
+app.get('/', (req, res) => {
+  res.status(200).send({ message: 'Welcome to the dark side!'});
+})
 app.get('/api/v1/recipes', (req, res) => {
   GetRecipes.getRecipes(req, res);
 });
 app.post('/api/v1/recipes', (req, res) => {
   PostRecipe.postRecipe(req, res);
 });
-app.post('/api/v1/recipes/:id', (req, res) => {
+app.post('/api/v1/recipes/:id/reviews', (req, res) => {
   PostReview.postReview(req, res);
 });
 app.put('/api/v1/recipes/:id', (req, res) => {
@@ -44,7 +47,7 @@ app.delete('/api/v1/recipes/:id', (req, res) => {
   DelRecipe.deleteRecipe(req, res);
 });
 
-app.listen(port, () => {
+export default app.listen(port, () => {
   console.log(app.get('env'));
   console.log(`Live on port ${port}`);
 });

@@ -19,7 +19,7 @@ export class GetRecipes {
       const rec = JSON.parse(data);
       let upvotes;
 
-      if ( sort === 'upvotes' && order === 'des') {
+      if ( sort === 'upvotes' && order === 'desc') {
         let max;
         for (let i = 0; i < rec.length; i += 1) {
           if (!max || parseInt(rec[i].upvotes, 10) > parseInt(max.upvotes, 10)) {
@@ -106,14 +106,15 @@ export class PostReview {
       const obj = JSON.parse(data);
       for (let i = 0; i < obj.length; i += 1) {
         if (id === obj[i].id) {
-          obj[i].reviews.push({ id: reviews });
+          obj[i].reviews.push({ user: reviews });
           const json = JSON.stringify(obj, null, 2);
           fs.writeFile('recipe.json', json, (err) => {
             if (err) throw err;
-            res.status(201).send({ message: 'Reviews Added.' });
           });
         }
       }
+      res.send({ message: 'Reviews Added.' });
+      res.status(201);
     });
   }
 }
@@ -133,10 +134,12 @@ export class UpdateRecipe {
           const json = JSON.stringify(obj, null, 2);
           fs.writeFile('recipe.json', json, (err) => {
             if (err) throw err;
-            res.status(201).send(obj);
           });
+          res.send(obj[i]);
         }
+        res.status(404);
       }
+      res.status(201);
     });
   }
 }
