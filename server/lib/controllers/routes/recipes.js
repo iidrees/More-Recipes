@@ -83,10 +83,10 @@ export class DelRecipe {
           const json = JSON.stringify(obj, null, 2);
           fs.writeFile('recipe.json', json, (err) => {
             if (err) throw err;
-            res.status(204).send({ message: 'Recipe Deleted' });
           });
         }
       }
+      res.status(204).send({ message: 'Recipe Deleted' });
     });
   }
 }

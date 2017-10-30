@@ -101,48 +101,29 @@
     "id": "6",
     "name": "Hokage Narutoklasjdk",
     "email": "narutokun@kun.com",
-    "createdAt": "2017-10-30T11:39:25.206Z",
+    "createdAt": "2017-10-30T16:29:50.585Z",
     "recipes": [
       {},
       null,
       null,
       null,
       null,
+      null,
       {
         "step": [
           {
             "step": "This recipe is one of a kind and here it is."
           }
         ]
+      }
+    ],
+    "reviews": [
+      {
+        "user1": "THis is awesome",
+        "user2": "THis is awesome"
       },
       {
-        "step": [
-          {
-            "step": "This recipe is one of a kind and here it is."
-          }
-        ]
-      }
-    ],
-    "reviews": [
-      {
-        "user1": "THis is awesome",
-        "user2": "THis is awesome"
-      }
-    ],
-    "upvotes": ""
-  },
-  {
-    "id": "6",
-    "name": "Hokage Narutoklasjdk",
-    "email": "narutokun@kun.com",
-    "createdAt": "2017-10-30T11:42:42.195Z",
-    "recipes": [
-      {}
-    ],
-    "reviews": [
-      {
-        "user1": "THis is awesome",
-        "user2": "THis is awesome"
+        "user": "THis is awesome"
       }
     ],
     "upvotes": ""
