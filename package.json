@@ -5,10 +5,24 @@
   "main": "server.js",
   "scripts": {
     "start:dev": "node_modules/.bin/babel-node lib/server.js --presets es2015,stage-2",
-    "start": "nodemon lib/server.js --exec babel-node",
+    "start": "nodemon server/lib/server.js --exec babel-node",
     "build": "babel lib -d dist",
     "serve": "node dist/server.js",
-    "test": "mocha --compilers js:babel-core/register"
+    "s:test": "set NODE_ENV=test-l&& mocha --require babel-register  server/test/test.js",
+    "test": "cross-env NODE_ENV=test nyc mocha server/test/test.js ",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+  },
+  "nyc": {
+    "require": [
+      "babel-register"
+    ],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "sourceMap": false,
+    "instrument": false
   },
   "keywords": [
     "Node",
@@ -25,6 +39,7 @@
     "babel-register": "^6.26.0",
     "body-parser": "^1.18.2",
     "chai": "^4.1.2",
+    "coveralls": "^3.0.0",
     "eslint": "^4.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.4.0",
@@ -35,6 +50,10 @@
   "devDependencies": {
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "istanbul": "^0.4.5",
+    "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^11.2.1",
+    "supertest": "^3.0.0",
     "uuid": "^3.1.0"
   }
 }

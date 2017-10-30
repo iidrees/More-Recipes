@@ -15,3 +15,5 @@ server/lib/model/
 server/recepe.json
 server/recipe.json 
 .github/
+.coveralls.yml
+node_modules/
