@@ -61,7 +61,7 @@ describe('Server, Status and Content', () => {
       request(app)
         .put(`/api/v1/recipes/${newRecipe.id}`)
         .send(updateRecipe)
-        .expect(200)
+        .expect(201)
         .end((err, res) => {
           if (err) return done(err);
           done();
@@ -71,7 +71,7 @@ describe('Server, Status and Content', () => {
       request(app)
         .post(`/api/v1/recipes/${newRecipe.id}/reviews`)
         .send(newRecipe)
-        .expect(201)
+        .expect(200)
         .end((err, res) => {
           if (err) return done(err);
           done();
@@ -82,6 +82,15 @@ describe('Server, Status and Content', () => {
         .get('/api/v1/recipes?sort=upvotes&order=desc')
         .query({sort: 'upvotes', order: 'desc' })
         .expect(200)
+        .end((err, res) => {
+          if (err) return done(err);
+          done();
+        });
+    });
+    it('should DELETE a recipe', (done) => {
+      request(app)
+        .delete(`/api/v1/recipes/${newRecipe.id}`)
+        .expect(204)
         .end((err, res) => {
           if (err) return done(err);
           done();

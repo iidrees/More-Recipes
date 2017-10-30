@@ -19,7 +19,7 @@ export class GetRecipes {
       const rec = JSON.parse(data);
       let upvotes;
 
-      if ( sort === 'upvotes' && order === 'desc') {
+      if (sort === 'upvotes' && order === 'desc') {
         let max;
         for (let i = 0; i < rec.length; i += 1) {
           if (!max || parseInt(rec[i].upvotes, 10) > parseInt(max.upvotes, 10)) {
@@ -27,7 +27,7 @@ export class GetRecipes {
           }
           upvotes = max;
         }
-        console.log(`This is the number of upvotes ${upvotes}`);
+        //console.log(`This is the number of upvotes ${upvotes}`);
         res.status(200).send(upvotes);
       }
       console.log(rec);
@@ -57,10 +57,7 @@ export class PostRecipe {
       upvotes: req.body.upvotes
     };
     fs.readFile('recipe.json', (err, data) => {
-      if (err) {
-        console.log(err);
-      }
-      // if ()
+      if (err) throw err;
       const newRec = JSON.parse(data);
       newRec.push(newRecipe);
       const json = JSON.stringify(newRec, null, 2);
@@ -128,18 +125,18 @@ export class UpdateRecipe {
     fs.readFile('recipe.json', (err, data) => {
       if (err) throw err;
       const obj = JSON.parse(data);
-      for (let i = 0; i < obj.length; i += 1) {
+      let i;
+      for (i = 0; i < obj.length; i += 1) {
         if (id === obj[i].id) {
           obj[i].recipes[i] = { step: recipe };
           const json = JSON.stringify(obj, null, 2);
           fs.writeFile('recipe.json', json, (err) => {
             if (err) throw err;
           });
-          res.send(obj[i]);
         }
-        res.status(404);
+        // res.status(404);
       }
-      res.status(201);
+      return res.status(201).send(obj[i]);
     });
   }
 }
