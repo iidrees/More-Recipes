@@ -1,7 +1,9 @@
 // import dependencies
 import express from 'express';
+import 'babel-polyfill';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import {
   GetRecipes,
   PostRecipe,
@@ -10,14 +12,17 @@ import {
   UpdateRecipe
 } from './controllers/routes/recipes';
 
-
 const app = express(); // initialise project
+
+// configured the dotenv command to enable protection of important links
+dotenv.config();
 
 // log request to the console
 app.use(logger('dev'));
 
 const port = process.env.PORT || 5000;
-// set up body-parser to parse incominf request data
+
+// set up body-parser to parse incoming request data
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ type: 'application/json' }));
@@ -48,6 +53,7 @@ app.delete('/api/v1/recipes/:id', (req, res) => {
 
 export default app.listen(port, () => {
   console.log(app.get('env'));
+ console.log(process.env);
   console.log(`Live on port ${port}`);
 });
 
