@@ -42,7 +42,7 @@ describe('Server, Status and Content', () => {
       request(app)
         .get('/api/v1/recipes')
         .expect(200)
-        .end((err, res) => {
+        .end((err) => {
           if (err) return done(err);
           done();
         });
@@ -52,7 +52,7 @@ describe('Server, Status and Content', () => {
         .post('/api/v1/recipes')
         .send(newRecipe)
         .expect(201)
-        .end((err, res) => {
+        .end((err) => {
           if (err) return done(err);
           done();
         });
@@ -62,7 +62,7 @@ describe('Server, Status and Content', () => {
         .put(`/api/v1/recipes/${newRecipe.id}`)
         .send(updateRecipe)
         .expect(201)
-        .end((err, res) => {
+        .end((err) => {
           if (err) return done(err);
           done();
         });
@@ -72,7 +72,7 @@ describe('Server, Status and Content', () => {
         .post(`/api/v1/recipes/${newRecipe.id}/reviews`)
         .send(newRecipe)
         .expect(200)
-        .end((err, res) => {
+        .end((err) => {
           if (err) return done(err);
           done();
         });
@@ -80,9 +80,9 @@ describe('Server, Status and Content', () => {
     it('should GET recipe with most UPVOTES', (done) => {
       request(app)
         .get('/api/v1/recipes?sort=upvotes&order=desc')
-        .query({sort: 'upvotes', order: 'desc' })
+        .query({ sort: 'upvotes', order: 'desc' })
         .expect(200)
-        .end((err, res) => {
+        .end((err) => {
           if (err) return done(err);
           done();
         });
@@ -91,7 +91,7 @@ describe('Server, Status and Content', () => {
       request(app)
         .delete(`/api/v1/recipes/${newRecipe.id}`)
         .expect(204)
-        .end((err, res) => {
+        .end((err) => {
           if (err) return done(err);
           done();
         });

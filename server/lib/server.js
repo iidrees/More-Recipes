@@ -1,6 +1,5 @@
 // import dependencies
 import express from 'express';
-import fs from 'fs';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import {
@@ -28,8 +27,8 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 // Recipe Endpoint
 app.get('/', (req, res) => {
-  res.status(200).send({ message: 'Welcome to the dark side!'});
-})
+  res.status(200).send({ message: 'Welcome to the dark side!' });
+});
 app.get('/api/v1/recipes', (req, res) => {
   GetRecipes.getRecipes(req, res);
 });
