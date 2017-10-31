@@ -1,4 +1,7 @@
-# More-Recipes!                                 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# More-Recipes!
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Maintainability](https://api.codeclimate.com/v1/badges/78da5d21d008689ddbea/maintainability)](https://codeclimate.com/github/iidrees/More-Recipes/maintainability)
+[![Build Status](https://travis-ci.org/iidrees/More-Recipes.svg?branch=develop)](https://travis-ci.org/iidrees/More-Recipes)
 
 ## Introduction
 
