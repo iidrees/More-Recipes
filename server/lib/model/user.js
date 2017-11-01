@@ -1,6 +1,14 @@
 
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: {
+        args: true,
+        msg: 'This username already exists'
+      }
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -23,7 +31,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: 'Email is required'
+          msg: 'password is required'
         }
       }
     },

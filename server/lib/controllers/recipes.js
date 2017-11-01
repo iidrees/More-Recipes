@@ -16,14 +16,19 @@ export default {
   },
   listAll(req, res) {
     return Recipe
-      .all()
-      .then((books) => {
-        if (books.length === 0) {
+      .findAll({
+        include: [{
+          model: reviews,
+          as: 'reviews',
+        }],
+      })
+      .then((recipe) => {
+        if (recipe.length === 0) {
           return res.status(200).send({
             message: 'Out of stock'
           });
         }
-        return res.status(200).send(books);
+        return res.status(200).send(recipe);
       })
       .catch(error => res.status(400).send(error));
   },

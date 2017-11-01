@@ -7,7 +7,7 @@ export default (sequelize, DataTypes) => {
     },
   });
   Reviews.associate = (model) => {
-    Reviews.hasMany(model.Reviews, {
+    Reviews.belongsTo(model.Recipes, {
       foreignKey: 'recipesId',
       onDelete: 'CASCADE',
     });

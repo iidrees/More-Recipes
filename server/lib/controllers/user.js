@@ -4,7 +4,7 @@ const User = model.User
 console.log(User);
 export default {
   signUp(req, res) {
-    let { username, email, password } = req.body;
+    const { username, email, password } = req.body;
     console.log(email);
     return User
       .create({
