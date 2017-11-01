@@ -23,7 +23,7 @@ dotenv.config();
 // log request to the console
 app.use(logger('dev'));
 
-const port = process.env.PORT || 5005;
+const port = process.env.PORT || 5000;
 
 // set up body-parser to parse incoming request data
 app.use(bodyParser.json());
@@ -55,9 +55,7 @@ app.post('/api/v1/recipes/:recipeid/reviews', (req, res) => {
 app.post('/api/v1/users/signup', (req, res) => {
   create.signUp(req, res);
 });
-app.post('/api/v1/users/signin', (req, res) => {
-  create.signIn(req, res);
-});
+app.post('/api/v1/users/signin',create.signIn);
 
 // In-memory routes
 

@@ -18,7 +18,7 @@ export default (sequelize, DataTypes) => {
       },
       validate: {
         isEmail: {
-          arg: true,
+          args: true,
           msg: 'This email already exist'
         },
         notEmpty: {
