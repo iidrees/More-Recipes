@@ -37,6 +37,14 @@ app.use(bodyParser.json({ type: 'application/json' }));
 app.get('/', (req, res) => {
   res.status(200).send({ message: 'Welcome to the dark side!' });
 });
+
+// Signup and Signin (Authentication) endpoints
+app.post('/api/v1/users/signup', (req, res) => {
+  create.signUp(req, res);
+});
+app.post('/api/v1/users/signin',create.signIn);
+
+// Recipes endpoints
 app.post('/api/v1/recipes', (req, res) => {
   postRecipe.postRecipes(req, res);
 });
@@ -52,10 +60,6 @@ app.delete('/api/v1/recipes/:id', (req, res) => {
 app.post('/api/v1/recipes/:recipeid/reviews', (req, res) => {
   postReviews.postReviews(req, res);
 });
-app.post('/api/v1/users/signup', (req, res) => {
-  create.signUp(req, res);
-});
-app.post('/api/v1/users/signin',create.signIn);
 
 // In-memory routes
 
