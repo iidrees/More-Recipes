@@ -14,6 +14,8 @@ import {
 import create from './controllers/user';
 import postRecipe from './controllers/recipes';
 import postReviews from './controllers/reviews';
+import auth from './auth/auth';
+
 
 const app = express(); // initialise project
 
@@ -45,18 +47,12 @@ app.post('/api/v1/users/signup', (req, res) => {
 app.post('/api/v1/users/signin',create.signIn);
 
 // Recipes endpoints
-app.post('/api/v1/recipes', (req, res) => {
-  postRecipe.postRecipes(req, res);
-});
-app.get('/api/v1/recipes', (req, res) => {
-  postRecipe.listAll(req, res);
-});
-app.put('/api/v1/recipes/:id', (req, res) => {
-  postRecipe.updateRecipe(req, res);
-});
-app.delete('/api/v1/recipes/:id', (req, res) => {
-  postRecipe.deleteRecipe(req, res);
-});
+app.post('/api/v1/recipes', auth.verifyUser, postRecipe.postRecipes);
+app.get('/api/v1/recipes', auth.verifyUser, postRecipe.listAll);
+app.put('/api/v1/recipes/:id', auth.verifyUser, postRecipe.updateRecipe);
+
+app.delete('/api/v1/recipes/:id',auth.verifyUser, postRecipe.deleteRecipe);
+
 app.post('/api/v1/recipes/:recipeid/reviews', (req, res) => {
   postReviews.postReviews(req, res);
 });
