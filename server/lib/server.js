@@ -11,6 +11,10 @@ import {
   PostReview,
   UpdateRecipe
 } from './controllers/routes/recipes';
+import create from './controllers/user';
+import postRecipe from './controllers/recipes';
+import postReviews from './controllers/reviews';
+
 const app = express(); // initialise project
 
 // configured the dotenv command to enable protection of important links
@@ -33,6 +37,30 @@ app.use(bodyParser.json({ type: 'application/json' }));
 app.get('/', (req, res) => {
   res.status(200).send({ message: 'Welcome to the dark side!' });
 });
+app.post('/api/v1/recipes', (req, res) => {
+  postRecipe.postRecipes(req, res);
+});
+app.get('/api/v1/recipes', (req, res) => {
+  postRecipe.listAll(req, res);
+});
+app.put('/api/v1/recipes/:id', (req, res) => {
+  postRecipe.updateRecipe(req, res);
+});
+app.delete('/api/v1/recipes/:id', (req, res) => {
+  postRecipe.deleteRecipe(req, res);
+});
+app.post('/api/v1/recipes/:recipeid/reviews', (req, res) => {
+  postReviews.postReviews(req, res);
+});
+app.post('/api/v1/users/signup', (req, res) => {
+  create.signUp(req, res);
+});
+app.post('/api/v1/users/signin', (req, res) => {
+  create.signIn(req, res);
+});
+
+// In-memory routes
+
 app.get('/api/v1/recipes', (req, res) => {
   postRecipe.postRecipes(req, res);
 });

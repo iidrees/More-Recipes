@@ -9,7 +9,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -22,7 +23,7 @@ module.exports = {
       recipesId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
-        refrences: {
+        references: {
           model: 'Recipes',
           key: 'id',
           as: 'recipesId',

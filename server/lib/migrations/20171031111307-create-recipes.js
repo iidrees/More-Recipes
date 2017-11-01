@@ -9,10 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       content: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
@@ -25,13 +27,13 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
-        refrences: {
-          model: 'User',
+        references: {
+          model: 'Users',
           key: 'id',
           as: 'userId',
         },
       },
-    }),  
+    }),
   down: (queryInterface/* , Sequelize */) => {
     return queryInterface.dropTable('Recipes');
   }

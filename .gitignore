@@ -11,17 +11,7 @@ template/js/jquery-3.2.1.min.js
 
 server/node_modules/
 server/dist
-server/lib/model/
 .github/
 node_modules/
 recepe.json
 .env
-model/favorites.js
-model/recipes.js
-model/reviews.js
-model/user.js
-
-server/lib/controllers/user.js
-server/lib/controllers/reviews.js
-server/lib/controllers/recipes.js
-server/lib/config/config.js
