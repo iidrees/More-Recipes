@@ -53,12 +53,10 @@ app.put('/api/v1/recipes/:id', auth.verifyUser, postRecipe.updateRecipe);
 
 app.delete('/api/v1/recipes/:id',auth.verifyUser, postRecipe.deleteRecipe);
 
-//app.post('/api/v1/recipes/:recipeid/reviews', (req, res) => {
-//  postReviews.postReviews(req, res);
-//});
+app.post('/api/v1/recipes/:recipeid/reviews', auth.verifyUser, postReviews.postReviews);
+
 
 // In-memory routes
-
 app.get('/api/v1/recipes', (req, res) => {
   postRecipe.postRecipes(req, res);
 });
