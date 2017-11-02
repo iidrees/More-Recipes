@@ -41,15 +41,17 @@ app.get('/api/v1/', (req, res) => {
 app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
 
+// jwt middleware to 
+app.use(auth.verifyUser);
 /**
  * Recipes endpoints requiring authentication before getting access
  *to different points of the application
  */
-app.get('/api/v1/recipes', auth.verifyUser, RecipeList.listAll);
-app.post('/api/v1/recipes', auth.verifyUser, Recipes.postRecipes);
-app.post('/api/v1/recipes/:recipeid/reviews', auth.verifyUser, postReviews.postReviews);
-app.put('/api/v1/recipes/:id', auth.verifyUser, RecipeUpdate.updateRecipe);
-app.delete('/api/v1/recipes/:id', auth.verifyUser, RecipeDelete.deleteRecipe);
+app.get('/api/v1/recipes', RecipeList.listAll);
+app.post('/api/v1/recipes', Recipes.postRecipes);
+app.post('/api/v1/recipes/:recipeid/reviews', postReviews.postReviews);
+app.put('/api/v1/recipes/:id', RecipeUpdate.updateRecipe);
+app.delete('/api/v1/recipes/:id', RecipeDelete.deleteRecipe);
 
 
 // Start server on port 5000

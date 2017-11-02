@@ -5,7 +5,7 @@
     "database": "more-recipes-db",
     "host": "127.0.0.1",
     "port": 5432,
-    "dialect": "postgres"
+    "dialect": "postgresv4.0.0"
   },
   "test": {
     "username": "root",
