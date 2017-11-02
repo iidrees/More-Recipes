@@ -1,16 +1,18 @@
-import model from '../model';
-
-const Recipe = model.Recipes
-const Reviews = model.Reviews;
-// add relationship between user and reviews so its easy to map who posted what.
-console.log(Reviews);
-export default {
-  postReviews(req, res) {
+import { Recipe, Reviews } from '../model';
+/**
+ * This is a Reviews class that allows a user post a review to a recipe
+ */
+export default class Review {
+  /**
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} JSON -the JSON returned to the client as response
+ * @return {object} Reviews - returns the reviews added to a recipe
+ */
+  static postReviews(req, res) {
     const id = req.params.recipeid;
     const userId = req.decoded.id;
     const { content } = req.body;
-    console.log(id, content);
-    // res.status(200).send({ message: 'Reviews posted' });
     if (!userId) {
       return res.status(401).send({
         success: false,
@@ -19,16 +21,15 @@ export default {
     }
     return Reviews
       .create({
-        content: content,
-        recipesId: id
+        content,
+        recipeId: id
       })
       .then((review) => {
-         res.status(201).send({
-           success: true,
-           review: review,
-         });
+        res.status(201).send({
+          success: true,
+          review,
+        });
       })
       .catch(err => res.status(400).send(err));
   }
-
 }

@@ -12,8 +12,12 @@ export default (sequelize, DataTypes) => {
   });
   Recipes.associate = (model) => {
     Recipes.hasMany(model.Reviews, {
-      foreignKey: 'recipesId',
+      foreignKey: 'recipeId',
       as: 'reviews'
+    });
+    Recipes.hasMany(model.Votes, {
+      foreignKey: 'recipeId',
+      as: 'votes'
     });
     Recipes.belongsTo(model.User, {
       foreignKey: 'userId',

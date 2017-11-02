@@ -18,7 +18,7 @@ export default {
     } else {
       return res.status(403).send({
         success: false,
-        message: 'Token not provided'
+        message: 'Please send your token along with your request'
       });
     }
   }

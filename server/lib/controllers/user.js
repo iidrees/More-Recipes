@@ -1,28 +1,29 @@
-import bcrypt from 'bcrypt'
+// import dependencies
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import model  from '../model';
+import { User } from '../model';
 
-// import { Recipes } from '../model/recipes';
-const User = model.User;
-const saltRounds = 10;
-
-console.log(User);
-export default {
-  signUp(req, res) {
-    const { username, email} = req.body;
+/**
+ * This is a UserSignup class that allows a client to signup
+ */
+export class UserSignup {
+  /**
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} JSON - this is returned to notify the user of account creation
+ * @return {object}  JSON- returns the infomatoin about the account created
+ */
+  static signUp(req, res) {
+    const { username, email } = req.body;
     let { password } = req.body;
-    // console.log(email);
 
-    if (password.length < 8 ) {
+    if (password.length < 8) {
       return res.status(400).send({
+        status: 'Fail',
         message: 'Password must not be less than 8'
       });
     }
-  
     password = bcrypt.hashSync(password, 10);
-
-    console.log('this is the hash', password);
-    // res.status(200).send({ message: 'Password Created'});
     return User
       .create({
         username,
@@ -31,8 +32,8 @@ export default {
       })
       .then((user) => {
         res.status(201).send({
-          success: true,
-          message: 'Account created',
+          status: 'success',
+          message: 'Account is created created',
           username: user.username,
           id: user.id
         });
@@ -43,16 +44,33 @@ export default {
             error: err.errors[0].message
           });
         }
-        return res.status(400).send({message: err});
+        return res.status(400).send({
+          message: err
+        });
       });
-  },
+  }
+}
 
-
-  signIn(req, res) {
+/**
+ * This is a UserSignin class that allows a client to signin and
+ * a token is generated for the user to keep for future authentication
+ */
+export class UserSignin {
+  /**
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} JSON - this is returned to notify the user of account creation
+ * @return {object} JSON - returns the informatoin about the account created
+ */
+  static signIn(req, res) {
+    /* grab the username, email and password from the req.body
+      these values are parsed and then if there is an error it is returned
+      if
+     */
     const { username, email, password } = req.body;
-    // console.log(email, password);
     if (!email || !password) {
-      return res.status(400).send({ 
+      return res.status(400).send({
+        status: 'Error',
         message: 'Please enter your username and password'
       });
     }
@@ -65,6 +83,7 @@ export default {
       .then((user) => {
         if (!user) {
           return res.status(400).send({
+            status: 'Error',
             err: 'User Not Found'
           });
         }
@@ -74,17 +93,16 @@ export default {
             expiresIn: '3h'
           });
           return res.status(200).send({
-            success: true,
+            status: 'Success',
             message: 'Token generation and signin successful',
-            token: token
-          })
+            data: token,
+          });
         }
         return res.status(400).send({
+          status: 'Fail',
           message: 'Incorrect Login Details supplied'
-        })
-      })
-    
+        });
+      });
   }
+}
 
-
-};
