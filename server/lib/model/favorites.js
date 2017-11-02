@@ -14,6 +14,7 @@ export default (sequelize, DataTypes) => {
     Favorites.belongsTo(model.Recipes, {
       foreignKey: 'recipeId',
       onDelete: 'CASCADE',
+      as: 'recipes'
     });
   };
   Favorites.associate = (model) => {

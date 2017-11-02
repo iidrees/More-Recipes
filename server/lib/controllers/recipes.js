@@ -2,6 +2,7 @@ import model from '../model';
 // import   from '../model/recipes';
 const Recipe = model.Recipes;
 const Reviews = model.Reviews;
+const Favorites = model.Favorites;
 
 /**
  * This is a Recipes class that allows you POST a recipe
@@ -52,10 +53,16 @@ export class RecipeList {
   static listAll(req, res) {
     return Recipe
       .findAll({
-        include: [{
-          model: Reviews,
-          as: 'reviews',
-        }],
+        include: [
+          {
+            model: Reviews,
+            as: 'reviews',
+          },
+          {
+            model: Favorites,
+            as: 'favorites',
+          }
+        ],
       })
       .then((recipe) => {
         if (recipe.length === 0) {
