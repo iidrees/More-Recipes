@@ -49,7 +49,7 @@ app.post('/api/v1/users/signin',create.signIn);
 // Recipes endpoints
 app.post('/api/v1/recipes', auth.verifyUser, postRecipe.postRecipes);
 app.get('/api/v1/recipes', auth.verifyUser, postRecipe.listAll);
-// app.put('/api/v1/recipes/:id', auth.verifyUser, postRecipe.updateRecipe);
+app.put('/api/v1/recipes/:id', auth.verifyUser, postRecipe.updateRecipe);
 
 //app.delete('/api/v1/recipes/:id',auth.verifyUser, postRecipe.deleteRecipe);
 
