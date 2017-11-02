@@ -51,7 +51,7 @@ app.post('/api/v1/recipes', auth.verifyUser, postRecipe.postRecipes);
 app.get('/api/v1/recipes', auth.verifyUser, postRecipe.listAll);
 app.put('/api/v1/recipes/:id', auth.verifyUser, postRecipe.updateRecipe);
 
-//app.delete('/api/v1/recipes/:id',auth.verifyUser, postRecipe.deleteRecipe);
+app.delete('/api/v1/recipes/:id',auth.verifyUser, postRecipe.deleteRecipe);
 
 //app.post('/api/v1/recipes/:recipeid/reviews', (req, res) => {
 //  postReviews.postReviews(req, res);
