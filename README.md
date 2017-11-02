@@ -26,9 +26,24 @@ This is a project divided into three parts:
 This is a project in three parts, and the first part is to design a UI Template to be hosted using Github Pages.
 To view the UI template for the More-Recipes web application on Github Pages, you should click on this link [More-Recipes](https://iidrees.github.io/More-Recipes/template/landing.html) .
 
+The second part of this project is the Sever-side 
+The server-side is where the functionality for the API is storedd.
+This is the part where the logic on how Users are created, 
+User Authentication is handled, API versioning is used,
+JSONWEBTOKEN is used to protect different endpoints etc.
+
 
 ### Prerequisites
 To view the UI Template, please use a web browser, preferably, Google Chrome and ensure you have a very good internet connection for a good web experience.
+
+To see how the API works, kindly get a POSTMAN application fired up,
+go to this heroku [address](quiet-earth-33684.herokuapp.com).
+
+## To hit specific routes/endpoints for Testing using POSTMAN
+
+### To signup
+* Goto the [address](quiet-earth-33684.herokuapp.com/api/v1/users/)
+
 
 ### Built With
 

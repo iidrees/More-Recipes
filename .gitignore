@@ -10,7 +10,7 @@ template/js/jquery-3.2.1.min.js
 
 
 server/node_modules/
-server/dist
+
 .github/
 node_modules/
 recepe.json
