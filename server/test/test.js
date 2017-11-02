@@ -2,42 +2,49 @@ import { assert } from 'chai';
 import request from 'supertest';
 import app from '../lib/server';
 
-
+let signup = {};
+let signin = {};
+let token;
 describe('Server, Status and Content', () => {
   describe('GET /, to test server ', () => {
     it('should respond with a 200 status code and a string', (done) => {
       request(app)
-        .get('/')
+        .get('/api/v1/home')
         .expect(200, done);
     });
   });
-  let newRecipe = {};
-  let updateRecipe = {};
-  describe('All Endpoints', () => {
+
+  describe('Sign up and Sign in', () => {
     beforeEach(() => {
-      newRecipe = {
-        id: '6',
-        name: 'Hokage Narutoklasjdk',
-        email: 'narutokun@kun.com',
-        createdAt: new Date(),
-        recipeTitle: 'Jollof Rice',
-        recipes: [
-          {
-            step: 'This is a good way to edit this thing.\nLets edit once more\nsome more more more more\n'
-          }
-        ],
-        reviews: 'THis is awesome',
-        upvotes: ''
+      signup = {
+        username: 'idrees',
+        email: 'idrees@g.com',
+        password: 'idreeskunkun'
       };
-      updateRecipe = {
-        createdAt: new Date(),
-        recipe: [
-          {
-            step: 'This recipe is one of a kind and here it is.'
-          }
-        ]
+      signin = {
+        username: 'narutokun',
+        email: 'idrees@gmail.com',
+        password: 'idreeskunkun'
       };
     });
+    it('Signup with these information', (done) => {
+      request(app)
+        .post('/api/v1/users/signup')
+        .send({
+          username: 'idrees',
+          email: 'idrees@g.com',
+          password: 'idreeskunkun'
+        })
+        .expect(201)
+        .end((err) => {
+          if (err) return done(err);
+          done();
+        });
+    });
+  });
+
+  describe('All Endpoints', () => {
+    
     it('GET "/api/v1/recipes" should return all recipes', (done) => {
       request(app)
         .get('/api/v1/recipes')
@@ -50,7 +57,7 @@ describe('Server, Status and Content', () => {
     it('POST a recipe to "/api/v1/recipes" and should return updated recipe.', (done) => {
       request(app)
         .post('/api/v1/recipes')
-        .send(newRecipe)
+        .send(signup)
         .expect(201)
         .end((err) => {
           if (err) return done(err);

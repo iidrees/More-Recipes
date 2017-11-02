@@ -17,10 +17,10 @@ export class UserSignup {
     const { username, email } = req.body;
     let { password } = req.body;
 
-    if (password.length < 8) {
+    if ( password.length < 8) {
       return res.status(400).send({
         status: 'Fail',
-        message: 'Password must not be less than 8'
+        message: 'Password must not be less than 8 or be undefined'
       });
     }
     password = bcrypt.hashSync(password, 10);
