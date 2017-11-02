@@ -1,10 +1,19 @@
 import model from '../model';
 // import   from '../model/recipes';
 const Recipe = model.Recipes;
-const reviews = model.Reviews;
-console.log(Recipe, reviews);
-export default {
-  postRecipes(req, res) {
+const Reviews = model.Reviews;
+
+/**
+ * This is a Recipes class that allows you POST a recipe
+ */
+export class Recipes {
+  /**
+ * Post recipe into the database
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} the JSON returned to the client as response
+ */
+  static postRecipes(req, res) {
     const { title, content } = req.body;
     const userId = req.decoded.id;
     if (!req.decoded.id) {
@@ -20,32 +29,59 @@ export default {
         userId,
       })
       .then((recipes) => {
-         res.status(201).send({
-           success: true,
-           recipe: recipes,
-         });
+        res.status(201).send({
+          success: true,
+          recipe: recipes,
+        });
       })
       .catch(err => res.status(400).send(err));
-  },
-  listAll(req, res) {
+  }
+}
+
+/**
+ * This is a Recipes class that allows you get all recipes a user has posted
+ */
+export class RecipeList {
+  /**
+ * parse values from the req.body & req.decoded
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} JSON -The JSON returned to the client as response containing all recipes
+ * and reviews
+ */
+  static listAll(req, res) {
     return Recipe
       .findAll({
         include: [{
-          model: reviews,
+          model: Reviews,
           as: 'reviews',
         }],
       })
       .then((recipe) => {
         if (recipe.length === 0) {
-          return res.status(204).send({
+          return res.status(200).send({
             message: 'No Recipe available, please enter a recipe.'
           });
         }
         return res.status(200).send(recipe);
       })
       .catch(error => res.status(400).send(error));
-  },
-  updateRecipe(req, res) {
+  }
+}
+
+
+/**
+ * This is a Recipes class that allows you to update a recipe
+ */
+export class RecipeUpdate {
+  /**
+ * parse values from the req.body & req.decoded
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} JSON -The JSON returned to the client as response containing
+ * the modified recipe.
+ */
+  static updateRecipe(req, res) {
     const userId = req.decoded.id;
     if (!req.decoded.id) {
       return res.status(401).send({
@@ -57,7 +93,7 @@ export default {
       .find({
         where: {
           id: parseInt(req.params.id, 10),
-          userId: userId
+          userId,
         }
       })
       .then((recipe) => {
@@ -74,8 +110,20 @@ export default {
           .catch(err => res.status(400).send(err));
       })
       .catch(err => res.status(400).send(err));
-  },
-  deleteRecipe(req, res) {
+  }
+}
+
+/**
+ * This is a Recipes class that allows you to delete a recipe
+ */
+export class RecipeDelete {
+/**
+ * parse values from the req.body & req.decoded to be used to delete the recipe
+ * @param {object} req - The request object from the client
+ * @param {object} res - The response object to the client
+ * @return {object} JSON
+ */
+  static deleteRecipe(req, res) {
     const userId = req.decoded.id;
     if (!req.decoded.id) {
       return res.status(401).send({
@@ -83,12 +131,11 @@ export default {
         message: 'You are not authorized to post a recipe, please send your token in the header or Signup for an account to post a recipe'
       });
     }
-    // console.log('type of req.params.id ', typeof parseInt(req.params.id, 10));
     return Recipe
       .find({
         where: {
           id: parseInt(req.params.id, 10),
-          userId: userId
+          userId,
         },
       })
       .then((recipe) => {
@@ -104,4 +151,5 @@ export default {
       })
       .catch(err => res.status(404).send(err));
   }
-};
+}
+

@@ -8,7 +8,7 @@ export default (sequelize, DataTypes) => {
   });
   Reviews.associate = (model) => {
     Reviews.belongsTo(model.Recipes, {
-      foreignKey: 'recipesId',
+      foreignKey: 'recipeId',
       onDelete: 'CASCADE',
     });
   };

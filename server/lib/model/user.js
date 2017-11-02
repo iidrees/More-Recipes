@@ -44,6 +44,11 @@ export default (sequelize, DataTypes) => {
     });
     User.hasMany(model.Favorites, {
       foreignKey: 'userId',
+      as: 'favorites'
+    });
+    User.hasOne(model.Votes, {
+      foreignKey: 'userId',
+      as: 'votes'
     });
   };
   return User;
