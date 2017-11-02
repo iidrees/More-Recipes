@@ -19,7 +19,7 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'recipeId',
       onDelete: 'CASCADE'
 
-    })
+    });
   };
 
   return Votes;

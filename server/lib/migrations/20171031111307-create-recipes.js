@@ -18,7 +18,7 @@ module.exports = {
       },
       upvotes: {
         type: Sequelize.INTEGER,
-        defaultValue: 0
+        defaultValue: 0,
       },
       downVotes: {
         type: Sequelize.INTEGER,

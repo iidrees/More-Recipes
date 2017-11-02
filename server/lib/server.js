@@ -8,7 +8,7 @@ import { UserSignup, UserSignin } from './controllers/user';
 import { Recipes, RecipeList, RecipeUpdate, RecipeDelete } from './controllers/recipes';
 import postReviews from './controllers/reviews';
 import auth from './auth/auth';
-
+import votes from './controllers/votes';
 
 const app = express(); // initialise project
 
@@ -30,7 +30,7 @@ app.use(bodyParser.json({ type: 'application/json' }));
 /* routes */
 
 /* Recipe Endpoint */
-app.get('/api/v1/', (req, res) => {
+app.get('/api/v1/home', (req, res) => {
   res.status(200).send({
     status: 'Success',
     message: 'Welcome To The More-Recipes API!'
@@ -52,6 +52,7 @@ app.post('/api/v1/recipes', Recipes.postRecipes);
 app.post('/api/v1/recipes/:recipeid/reviews', postReviews.postReviews);
 app.put('/api/v1/recipes/:id', RecipeUpdate.updateRecipe);
 app.delete('/api/v1/recipes/:id', RecipeDelete.deleteRecipe);
+app.post('/api/v1/recipes/:recipeid/votes', votes.makeUpVotes);
 
 
 // Start server on port 5000
