@@ -44,5 +44,35 @@ export default {
         return res.status(200).send(recipe);
       })
       .catch(error => res.status(400).send(error));
+  },
+  updateRecipe(req, res) {
+    const userId = req.decoded.id;
+    if (!req.decoded.id) {
+      return res.status(401).send({
+        success: false,
+        message: 'You are not authorized to post a recipe, please send your token in the header'
+      });
+    }
+    return Recipe
+      .find({
+        where: {
+          id: parseInt(req.params.id, 10),
+          userId: userId
+        }
+      })
+      .then((recipe) => {
+        if (!recipe) {
+          return res.status(404).send({
+            message: 'Recipe Not Found',
+          });
+        }
+        return recipe
+          .update({
+            content: req.body.content || recipe.content
+          })
+          .then(updatedRecipe => res.status(200).send(updatedRecipe))
+          .catch(err => res.status(400).send(err));
+      })
+      .catch(err => res.status(400).send(err));
   }
 };
