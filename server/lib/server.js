@@ -42,8 +42,10 @@ app.get('/api/v1/home', (req, res) => {
 app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
 
-// jwt middleware to 
+// jwt middleware to verify users trying yo hit other endpoints
+
 app.use(auth.verifyUser);
+
 /**
  * Recipes endpoints requiring authentication before getting access
  *to different points of the application
