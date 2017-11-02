@@ -9,6 +9,7 @@ import { Recipes, RecipeList, RecipeUpdate, RecipeDelete } from './controllers/r
 import postReviews from './controllers/reviews';
 import auth from './auth/auth';
 import votes from './controllers/votes';
+import { Favorite, FavoriteRecipes } from './controllers/favorites';
 
 const app = express(); // initialise project
 
@@ -53,6 +54,8 @@ app.post('/api/v1/recipes/:recipeid/reviews', postReviews.postReviews);
 app.put('/api/v1/recipes/:id', RecipeUpdate.updateRecipe);
 app.delete('/api/v1/recipes/:id', RecipeDelete.deleteRecipe);
 app.post('/api/v1/recipes/:recipeid/votes', votes.makeUpVotes);
+app.post('/api/v1/recipes/:recipeid/addfavorite', Favorite.addFavorites);
+app.get('/api/v1/users/:userid/recipes', FavoriteRecipes.getFavorite);
 
 
 // Start server on port 5000
