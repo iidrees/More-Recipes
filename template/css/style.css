@@ -5,7 +5,12 @@
   background-image: url('../images/ingredients-food.jpg'); 
 
 }
-
+.jumbotron {
+  margin-bottom: 0px;
+  opacity: 0.9;
+  color: #fff;
+  background: #000
+}
 /*Heading tags*/
 h1 {
   font-family: 'Roboto Condensed', sans-serif;
@@ -15,14 +20,16 @@ h1 {
   font-weight: bold; 
   margin-top: 70px;
 }
-
+.card {
+  margin-bottom: 15px;
+}
 
 /* signup, signin-page*/
 #signin-page, #signup-page {
   background: url('../images/curls/curl.png');
   background-color: white;
-  
 }
+
 @media(min-width: 768px) {
   .field-label-responsive {
     padding-top: .5rem;
@@ -30,7 +37,10 @@ h1 {
   }
 }
 
-
+#form-signin, #form-signup {
+  margin-top: 200px;
+  margin-bottom: 130px
+}
 /*Home page*/
 #home {
   background-image: url('../images/eight_horns.png');
@@ -62,7 +72,7 @@ h1 {
   padding-top: 20px;
 }
 #reci-pop-search {
-  margin-left: 90px;
+  margin-left: 50px;
 }
 
 input[type=text] {
@@ -99,9 +109,12 @@ blockquote {
 
 /*Profiles*/
 #profile {
-  background-color: pink;
+  background-color: gainsboro;
 }
 
+#nav-bar div  {
+  margin-left: 450px;
+}
 /*Recipe*/
 ol li {
   font-family: 'Roboto Condensed', sans-serif;
@@ -133,4 +146,8 @@ ol li {
 
 #red {
   color: red;
+}
+.footer {
+  background-color: grey;
+  margin-top: 0px;
 }
