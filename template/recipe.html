@@ -30,17 +30,14 @@
   <body id="">
     <!--Header/Navbar -->
     <header >    
-      <nav class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
+      <nav id="nav-bar" class="navbar navbar-expand-lg navbar-toggleable-md fixed-top navbar-dark bg-dark " style="background-color: #e3f2fd;">        
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand" href="#">More-Recipes!</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse left" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto ">
-            <li class="nav-item ">
-              <a class="nav-link" href="home.html"> Homepage </a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
             </li>
@@ -108,15 +105,13 @@
           <img src="./images/homepage/recipe-catalog.png" class="img-thumbnail" alt="Recipe Listing/Catalog">
          <form method="PUT" action="/edit-recipe">
               <button type="button" class="btn btn-outline-primary btn-sm" id="edit-recipe">Edit Recipe</button>
-            </form>
+              <button type="button" class="btn btn-outline-primary btn-sm" id="edit-recipe">Delete Recipe</button>
+          </form>
           <p class="home-para">Added by: Idrees Kurosaki</p>
           <p class="home-para">Added on: 20th October 2017</p>
           <p class="home-para">Recipe Steps: 10</p>
-          
-          <p class="home-para"> <span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span> </p>
-          <p class="home-para"> <span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span> </p>
-          <button type="button" class="btn btn-outline-success btn-sm" id="up-vote">Up-vote</button>
-          <button type="button" class="btn btn-outline-warning btn-sm" id="down-vote">down-vote</button>
+          <button type="button" class="btn btn-outline btn-sm" id="up-vote"><span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span></button>
+          <button type="button" class="btn btn-outline btn-sm" id="down-vote"><span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span></button>
 
         </div>      
     </div>
