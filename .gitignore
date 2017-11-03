@@ -10,7 +10,11 @@ template/js/jquery-3.2.1.min.js
 
 
 server/node_modules/
+<<<<<<< HEAD
 server/dist/
+=======
+
+>>>>>>> 0cb8715be6a198d526d73c8fd70cc36db2894dee
 .github/
 node_modules/
 recepe.json
@@ -18,4 +22,8 @@ recepe.json
 
 server/.nyc_output
 coverage
+<<<<<<< HEAD
 .nyc_output/
+=======
+.nyc_output
+>>>>>>> 0cb8715be6a198d526d73c8fd70cc36db2894dee

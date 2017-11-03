@@ -17,12 +17,15 @@ export class UserSignup {
     const { username, email } = req.body;
     let { password } = req.body;
 
+    /* Checks password length */
     if (password.length < 8) {
       return res.status(400).send({
         status: 'Fail',
-        message: 'Password must not be less than 8'
+        message: 'Password must not be less than 8 or be undefined'
       });
     }
+    /* encrypt password and stores in the database
+    along with some user information */
     password = bcrypt.hashSync(password, 10);
     return User
       .create({
@@ -39,11 +42,6 @@ export class UserSignup {
         });
       })
       .catch((err) => {
-        if (err.name === 'sequelizeUniqueConstraintError') {
-          return res.status(400).send({
-            error: err.errors[0].message
-          });
-        }
         return res.status(400).send({
           message: err
         });
@@ -74,20 +72,25 @@ export class UserSignin {
         message: 'Please enter your username and password'
       });
     }
-    return User
+    return User // check the db if user has already signedup
       .findOne({
         where: {
           username,
         }
       })
       .then((user) => {
-        if (!user) {
+        if (!user) { // returns an error if user has not signedup yet
           return res.status(400).send({
             status: 'Error',
             err: 'User Not Found'
           });
         }
         if (bcrypt.compareSync(password, user.password)) {
+          /*  if user has an account,
+            compare password with what we have in the db.
+            if password is correct, save the user id in a token
+            and send this to the user for authentication.
+           */
           const payload = { id: user.id };
           const token = jwt.sign(payload, process.env.SECRET, {
             expiresIn: '3h'

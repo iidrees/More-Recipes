@@ -1,4 +1,4 @@
-
+// Recipes Model
 export default (sequelize, DataTypes) => {
   const Recipes = sequelize.define('Recipes', {
     title: {
@@ -10,6 +10,8 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     },
   });
+  /* A relationship is created between Recipes
+  and Reviews, Favorites, and User */
   Recipes.associate = (model) => {
     Recipes.hasMany(model.Reviews, {
       foreignKey: 'recipeId',

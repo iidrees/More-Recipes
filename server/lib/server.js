@@ -11,7 +11,7 @@ import auth from './auth/auth';
 import votes from './controllers/votes';
 import { Favorite, FavoriteRecipes } from './controllers/favorites';
 
-const app = express(); // initialise project
+const app = express(); // Application is Initialised
 
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
@@ -42,25 +42,24 @@ app.get('/api/v1/home', (req, res) => {
 app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
 
-// jwt middleware to 
+// jwt middleware to verify users trying yo hit other endpoints
+
 app.use(auth.verifyUser);
+
 /**
  * Recipes endpoints requiring authentication before getting access
  *to different points of the application
  */
 app.get('/api/v1/recipes', RecipeList.listAll);
 app.post('/api/v1/recipes', Recipes.postRecipes);
-app.post('/api/v1/recipes/:recipeid/reviews', postReviews.postReviews);
 app.put('/api/v1/recipes/:id', RecipeUpdate.updateRecipe);
 app.delete('/api/v1/recipes/:id', RecipeDelete.deleteRecipe);
+app.post('/api/v1/recipes/:recipeid/reviews', postReviews.postReviews);
 app.post('/api/v1/recipes/:recipeid/votes', votes.makeUpVotes);
 app.post('/api/v1/recipes/:recipeid/addfavorite', Favorite.addFavorites);
 app.get('/api/v1/users/:userid/recipes', FavoriteRecipes.getFavorite);
 
 
 // Start server on port 5000
-export default app.listen(port, () => {
-  console.log(app.get('env'));
-  console.log(`Live on port ${port}`);
-});
+export default app.listen(port);
 

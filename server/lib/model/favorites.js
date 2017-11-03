@@ -1,4 +1,4 @@
-
+// Favorite Model
 export default (sequelize, DataTypes) => {
   const Favorites = sequelize.define('Favorites', {
     recipeId: {
@@ -10,6 +10,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     },
   });
+  /* Favorites has a relationship with Reipes and User */
   Favorites.associate = (model) => {
     Favorites.belongsTo(model.Recipes, {
       foreignKey: 'recipeId',

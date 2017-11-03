@@ -1,5 +1,6 @@
+// import Modules
 import model from '../model';
-// import   from '../model/recipes';
+
 const Recipe = model.Recipes;
 const Reviews = model.Reviews;
 const Favorites = model.Favorites;
@@ -15,14 +16,18 @@ export class Recipes {
  * @return {object} the JSON returned to the client as response
  */
   static postRecipes(req, res) {
+    // grab values from the req object
     const { title, content } = req.body;
     const userId = req.decoded.id;
-    if (!req.decoded.id) {
+    /* Authenticates user, returns a status
+    message asking the user to supply token */
+    if (!userId) {
       return res.status(401).send({
-        success: false,
+        status: 'Fail',
         message: 'You are not authorized to post a recipe, please send your token in the header'
       });
     }
+    /* When user is authenticated, we store data into the database */
     return Recipe
       .create({
         title,
@@ -51,6 +56,7 @@ export class RecipeList {
  * and reviews
  */
   static listAll(req, res) {
+    /* Get all recipes in the database */
     return Recipe
       .findAll({
         include: [
@@ -65,6 +71,7 @@ export class RecipeList {
         ],
       })
       .then((recipe) => {
+        /* Checks if db is empty and returns a notice to enter a recipe */
         if (recipe.length === 0) {
           return res.status(200).send({
             message: 'No Recipe available, please enter a recipe.'
@@ -89,13 +96,16 @@ export class RecipeUpdate {
  * the modified recipe.
  */
   static updateRecipe(req, res) {
+    /* Grab values to be used to authenticate from the request object */
     const userId = req.decoded.id;
-    if (!req.decoded.id) {
+    if (!userId) {
+      // if auth fails it returns this error
       return res.status(401).send({
         success: false,
         message: 'You are not authorized to post a recipe, please send your token in the header'
       });
     }
+    /* Finds a recipe to be updated */
     return Recipe
       .find({
         where: {
@@ -109,6 +119,7 @@ export class RecipeUpdate {
             message: 'Recipe Not Found',
           });
         }
+        /* Updates the recipe */
         return recipe
           .update({
             content: req.body.content || recipe.content
@@ -131,13 +142,15 @@ export class RecipeDelete {
  * @return {object} JSON
  */
   static deleteRecipe(req, res) {
+    /* Checks if user is authenticated */
     const userId = req.decoded.id;
-    if (!req.decoded.id) {
+    if (!userId) {
       return res.status(401).send({
         success: false,
         message: 'You are not authorized to post a recipe, please send your token in the header or Signup for an account to post a recipe'
       });
     }
+    /* if authenticated, we find the recipe we want to delete */
     return Recipe
       .find({
         where: {
@@ -151,6 +164,7 @@ export class RecipeDelete {
             message: 'Recipe Not Found'
           });
         }
+        /* Then we delete the recipe */
         return recipe
           .destroy()
           .then(() => res.status(200).send({ message: 'Recipe successfully deleted' }))

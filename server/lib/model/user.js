@@ -1,4 +1,4 @@
-
+// User Model
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: {
@@ -17,10 +17,6 @@ export default (sequelize, DataTypes) => {
         msg: 'This email already exist'
       },
       validate: {
-        isEmail: {
-          args: true,
-          msg: 'This email already exist'
-        },
         notEmpty: {
           msg: 'Email is required.'
         }
@@ -36,7 +32,7 @@ export default (sequelize, DataTypes) => {
       }
     },
   });
-
+  /* User has a relationship with Recipes, Favorites and Votes */
   User.associate = (model) => {
     User.hasMany(model.Recipes, {
       foreignKey: 'userId',

@@ -1,4 +1,4 @@
-
+// Votes Model
 export default (sequelize, DataTypes) => {
   const Votes = sequelize.define('Votes', {
     userId: {
@@ -10,6 +10,7 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     }
   });
+  /* Votes has a relationship with User and Recipes */
 
   Votes.associate = (model) => {
     Votes.belongsTo(model.User, {

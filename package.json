@@ -11,7 +11,9 @@
     "coveralls": "npm test && nyc report --reporter=text-lcov _mocha | coveralls",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "shc": "start coverage/lcov-report/index.html",
-    "seq": "node_modules/.bin/sequelize --require babel-register init"
+    "seq": "node_modules/.bin/sequelize --require babel-register init",
+    "build": "babel server/lib/ -d server/dist",
+    "start:dev1": "node server/dist/server.js"
   },
   "nyc": {
     "require": [
