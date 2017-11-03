@@ -1,6 +1,11 @@
-// User Model
-export default (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (sequelize, DataTypes) {
+  var User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -30,13 +35,13 @@ export default (sequelize, DataTypes) => {
           msg: 'password is required'
         }
       }
-    },
+    }
   });
-  /* User has a relationship with Recipes, Favorites and Votes */
-  User.associate = (model) => {
+
+  User.associate = function (model) {
     User.hasMany(model.Recipes, {
       foreignKey: 'userId',
-      as: 'recipes',
+      as: 'recipes'
     });
     User.hasMany(model.Favorites, {
       foreignKey: 'userId',

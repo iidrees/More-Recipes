@@ -2,8 +2,11 @@ import { Votes, Recipes } from '../model';
 
 
 const voted = false;
-export default {
-  makeUpVotes(req, res) {
+/*
+  A Votes class that allows a user to upvote or downvote a recipe
+ */
+export default class Vote {
+  static makeUpVotes(req, res) {
     const recipeId = req.params.recipeid;
     const userId = req.decoded.id;
     if (!userId) {
@@ -43,4 +46,4 @@ export default {
           .catch(err => res.status(400).send(err));
       });
   }
-};
+}

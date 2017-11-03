@@ -1,6 +1,11 @@
-// Favorite Model
-export default (sequelize, DataTypes) => {
-  const Favorites = sequelize.define('Favorites', {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (sequelize, DataTypes) {
+  var Favorites = sequelize.define('Favorites', {
     recipeId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -8,20 +13,19 @@ export default (sequelize, DataTypes) => {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
-    },
+    }
   });
-  /* Favorites has a relationship with Reipes and User */
-  Favorites.associate = (model) => {
+  Favorites.associate = function (model) {
     Favorites.belongsTo(model.Recipes, {
       foreignKey: 'recipeId',
       onDelete: 'CASCADE',
       as: 'recipes'
     });
   };
-  Favorites.associate = (model) => {
+  Favorites.associate = function (model) {
     Favorites.belongsTo(model.User, {
       foreignKey: 'userId',
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     });
   };
 

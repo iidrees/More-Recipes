@@ -1,6 +1,11 @@
-// Recipes Model
-export default (sequelize, DataTypes) => {
-  const Recipes = sequelize.define('Recipes', {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (sequelize, DataTypes) {
+  var Recipes = sequelize.define('Recipes', {
     title: {
       type: DataTypes.STRING,
       allowNull: false
@@ -8,11 +13,9 @@ export default (sequelize, DataTypes) => {
     content: {
       type: DataTypes.STRING,
       allowNull: false
-    },
+    }
   });
-  /* A relationship is created between Recipes
-  and Reviews, Favorites, and User */
-  Recipes.associate = (model) => {
+  Recipes.associate = function (model) {
     Recipes.hasMany(model.Reviews, {
       foreignKey: 'recipeId',
       as: 'reviews'
@@ -23,7 +26,7 @@ export default (sequelize, DataTypes) => {
     });
     Recipes.belongsTo(model.User, {
       foreignKey: 'userId',
-      onDelete: 'CASCADE',
+      onDelete: 'CASCADE'
     });
   };
   return Recipes;

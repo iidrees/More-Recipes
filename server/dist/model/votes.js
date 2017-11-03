@@ -1,6 +1,11 @@
-// Votes Model
-export default (sequelize, DataTypes) => {
-  const Votes = sequelize.define('Votes', {
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (sequelize, DataTypes) {
+  var Votes = sequelize.define('Votes', {
     userId: {
       type: DataTypes.INTEGER,
       allowNull: false
@@ -10,11 +15,10 @@ export default (sequelize, DataTypes) => {
       allowNull: false
     }
   });
-  /* Votes has a relationship with User and Recipes */
 
-  Votes.associate = (model) => {
+  Votes.associate = function (model) {
     Votes.belongsTo(model.User, {
-      foreignKey: 'userId',
+      foreignKey: 'userId'
     });
     Votes.belongsTo(model.Recipes, {
       foreignKey: 'recipeId',
