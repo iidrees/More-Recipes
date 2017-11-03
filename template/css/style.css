@@ -37,7 +37,7 @@ h1 {
   }
 }
 
-#form-signin {
+#form-signin, #form-signup {
   margin-top: 200px;
   margin-bottom: 130px
 }
@@ -149,5 +149,5 @@ ol li {
 }
 .footer {
   background-color: grey;
-  margin-top: 10px;
+  margin-top: 0px;
 }
