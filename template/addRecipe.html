@@ -73,20 +73,42 @@
     <div class="container"><!-- Start container for Add Form -->
       <div class="row">
         <div class="col-sm-5">
+            <div class="form-group row">
+                <label for="example-text-input" class="col-2 col-form-label home-para">Title</label>
+                <div class="col-10">
+                  <input class="form-control" type="text" value="Title of Recipe" id="example-text-input">
+                </div>
+              </div>
 
           <form method="POST" action="/add-recipe">
             <div class="form-group">
               <label for="add-recipe" class="home-para">Add Recipe below:</label>
-              <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="Enter your Recipe Here"></textarea>
+              <textarea class="form-control" id="exampleTextarea" rows="8" placeholder="Enter your Recipe Here"></textarea>
             </div>
             <button type="button" class="btn btn-outline-dark btn-sm" id="add-recipe"><span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>  Add Recipe</button>
           </form>
           <div class="form-group">
             <label for="exampleInputFile">Upload a picture of the food</label>
             <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-          </div>
-    
+          </div>    
     </div><!-- End Container Modify/View Recipe FORM -->
+    <div class="col-sm-5">
+        <div class="container">
+            <form method="POST" action="/add-recipe">
+              <div class="form-group">
+                <label for="add-recipe" class="home-para">Add Your Recipe Ingredients below:</label>
+                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Enter The Ingredients Here"></textarea>
+              </div>
+              <button type="button" class="btn btn-outline-dark btn-sm" id="add-recipe"><span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>Add Ingredients</button>
+            </form>
+          
+        </div>
+      
+    </div>
+      
+
+
+    </div>
     </div>
     </div>
 
