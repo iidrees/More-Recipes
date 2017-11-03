@@ -11,7 +11,7 @@ import auth from './auth/auth';
 import votes from './controllers/votes';
 import { Favorite, FavoriteRecipes } from './controllers/favorites';
 
-const app = express(); // initialise project
+const app = express(); // Application is Initialised
 
 // configured the dotenv command to enable storage in the environment
 dotenv.config();
@@ -52,17 +52,14 @@ app.use(auth.verifyUser);
  */
 app.get('/api/v1/recipes', RecipeList.listAll);
 app.post('/api/v1/recipes', Recipes.postRecipes);
-app.post('/api/v1/recipes/:recipeid/reviews', postReviews.postReviews);
 app.put('/api/v1/recipes/:id', RecipeUpdate.updateRecipe);
 app.delete('/api/v1/recipes/:id', RecipeDelete.deleteRecipe);
+app.post('/api/v1/recipes/:recipeid/reviews', postReviews.postReviews);
 app.post('/api/v1/recipes/:recipeid/votes', votes.makeUpVotes);
 app.post('/api/v1/recipes/:recipeid/addfavorite', Favorite.addFavorites);
 app.get('/api/v1/users/:userid/recipes', FavoriteRecipes.getFavorite);
 
 
 // Start server on port 5000
-export default app.listen(port, () => {
-  console.log(app.get('env'));
-  console.log(`Live on port ${port}`);
-});
+export default app.listen(port);
 

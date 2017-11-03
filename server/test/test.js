@@ -2,9 +2,9 @@ import { assert } from 'chai';
 import request from 'supertest';
 import app from '../lib/server';
 
-let signup = {};
-let signin = {};
-let token;
+// let signup = {};
+// let signin = {};
+// let token;
 describe('Server, Status and Content', () => {
   describe('GET /, to test server ', () => {
     it('should respond with a 200 status code and a string', (done) => {
@@ -13,7 +13,7 @@ describe('Server, Status and Content', () => {
         .expect(200, done);
     });
   });
-
+/*
   describe('Sign up and Sign in', () => {
     beforeEach(() => {
       signup = {
@@ -44,7 +44,7 @@ describe('Server, Status and Content', () => {
   });
 
   describe('All Endpoints', () => {
-    
+
     it('GET "/api/v1/recipes" should return all recipes', (done) => {
       request(app)
         .get('/api/v1/recipes')
@@ -103,5 +103,5 @@ describe('Server, Status and Content', () => {
           done();
         });
     });
-  });
+  }); */
 });

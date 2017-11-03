@@ -1,4 +1,4 @@
-
+// User Model
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
     username: {
@@ -32,7 +32,7 @@ export default (sequelize, DataTypes) => {
       }
     },
   });
-
+  /* User has a relationship with Recipes, Favorites and Votes */
   User.associate = (model) => {
     User.hasMany(model.Recipes, {
       foreignKey: 'userId',
