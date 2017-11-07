@@ -1,4 +1,4 @@
-'use strict';
+
 module.exports = {
   up: (queryInterface, Sequelize) => 
     queryInterface.createTable('Recipes', {
@@ -16,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      upvotes: {
+      upVotes: {
         type: Sequelize.INTEGER,
         defaultValue: 0,
       },

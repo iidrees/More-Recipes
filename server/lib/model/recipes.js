@@ -9,6 +9,14 @@ export default (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    upVotes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    },
+    downVotes: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0
+    }
   });
   /* A relationship is created between Recipes
   and Reviews, Favorites, and User */

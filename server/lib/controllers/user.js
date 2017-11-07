@@ -66,8 +66,8 @@ export class UserSignin {
       these values are parsed and then if there is an error it is returned
       if
      */
-    const { username, email, password } = req.body;
-    if (!email || !password) {
+    const { username, password } = req.body;
+    if (!username || !password) {
       return res.status(400).send({
         status: 'Error',
         message: 'Please enter your username and password'

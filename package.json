@@ -8,6 +8,8 @@
     "start": "nodemon server/lib/server.js --exec babel-node",
     "build": "babel lib -d dist",
     "serve": "node dist/server.js",
+    "seq:drop": "sequelize db:migrate:undo:all",
+    "seq:create": "sequelize db:migrate",
     "test": "nyc _mocha server/test --require babel-register --exit",
     "test:coverage": "nyc mocha server/test/test.js --require babel-register --exit && nyc report --reporter=text-lcov",
     "coverage": "npm test && nyc report --reporter=text-lcov | coveralls",
