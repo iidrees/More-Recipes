@@ -16,6 +16,7 @@ export class UserSignup {
   static signUp(req, res) {
     const { username, email } = req.body;
     let { password } = req.body;
+    console.log(' the password', password);
 
     /* Checks password length */
     if (password.length < 8) {
@@ -23,7 +24,7 @@ export class UserSignup {
         status: 'Fail',
         message: 'Password must not be less than 8 or be undefined'
       });
-    }
+    } 
     /* encrypt password and stores in the database
     along with some user information */
     password = bcrypt.hashSync(password, 10);

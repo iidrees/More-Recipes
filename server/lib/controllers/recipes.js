@@ -1,14 +1,14 @@
 // import Modules
-import model from '../model';
+import { Recipes, Reviews, Favorites } from '../model';
 
-const Recipe = model.Recipes;
+/* const Recipe = model.Recipes;
 const Reviews = model.Reviews;
-const Favorites = model.Favorites;
+const Favorites = model.Favorites; */
 
 /**
  * This is a Recipes class that allows you POST a recipe
  */
-export class Recipes {
+export class Recipe {
   /**
  * Post recipe into the database
  * @param {object} req - The request object from the client
@@ -28,7 +28,7 @@ export class Recipes {
       });
     }
     /* When user is authenticated, we store data into the database */
-    return Recipe
+    return Recipes
       .create({
         title,
         content,
@@ -57,7 +57,7 @@ export class RecipeList {
  */
   static listAll(req, res) {
     /* Get all recipes in the database */
-    return Recipe
+    return Recipes
       .findAll({
         include: [
           {
@@ -106,7 +106,7 @@ export class RecipeUpdate {
       });
     }
     /* Finds a recipe to be updated */
-    return Recipe
+    return Recipes
       .find({
         where: {
           id: parseInt(req.params.id, 10),
@@ -122,6 +122,7 @@ export class RecipeUpdate {
         /* Updates the recipe */
         return recipe
           .update({
+            title: req.body.title || recipe.title,
             content: req.body.content || recipe.content
           })
           .then(updatedRecipe => res.status(200).send(updatedRecipe))
@@ -151,7 +152,7 @@ export class RecipeDelete {
       });
     }
     /* if authenticated, we find the recipe we want to delete */
-    return Recipe
+    return Recipes
       .find({
         where: {
           id: parseInt(req.params.id, 10),
