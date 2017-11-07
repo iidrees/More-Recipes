@@ -1,7 +1,4 @@
 import { Votes, Recipes } from '../model';
-
-
-
 /*
   A Votes class that allows a user to upvote or downvote a recipe
  */
@@ -10,7 +7,6 @@ export default class Vote {
     const id = req.params.recipeid;
     const userId = req.decoded.id;
     let voted = false;
-    let newVotes;
     if (!userId) {
       return res.status(401).send({
         success: false,
