@@ -8,6 +8,8 @@ template/js/bootstrap.min.js
 
 
 server/node_modules/
+server/dist/
+dist/server/
 
 .github/
 node_modules/
