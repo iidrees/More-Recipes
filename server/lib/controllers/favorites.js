@@ -1,6 +1,8 @@
 // import modules
 import { Favorites, Recipes } from '../model';
 
+console.log('fave', Recipes, Favorites);
+
 /**
  * This is a Favorite class that allows a user add a favorite recipe
  */
@@ -34,7 +36,7 @@ export class Favorite {
       .then((fave) => {
         return res.status(201).send({
           status: 'Success',
-          message: 'Favorite recipe added',
+          message: 'Favorite Recipe Added',
           data: fave,
         });
       })
@@ -50,7 +52,7 @@ export class FavoriteRecipes {
  * Post recipe into the database
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} the JSON returned to the client as response
+ * @return {object} - A response object signifying success or failure of the request
  */
   static getFavorite(req, res) {
     /* Grab values from the request object */
@@ -65,14 +67,10 @@ export class FavoriteRecipes {
     }
     /* if user authenticated, find the user, and add the recipes they love too */
     return Favorites
-      .find({
+      .findAll({
         where: {
-          id,
-        },
-        include: [{
-          model: Recipes,
-          as: 'recipes'
-        }]
+          userId,
+        }
       })
       .then((fave) => {
         return res.status(200).send({

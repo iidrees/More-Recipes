@@ -1,34 +1,35 @@
 // User Model
-export default (sequelize, DataTypes) => {
+export default (sequelize, Sequelize) => {
   const User = sequelize.define('User', {
     username: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
-      unique: {
-        args: true,
-        msg: 'This username already exists'
+      unique: true,
+      validate: {
+        is: /^[a-z]+$/i
       }
     },
     email: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
+      validate: {
+        isEmail: {
+          msg: 'Please enter a valid email address'
+        },
+        isLowercase: {
+          msg: 'your email must be in lowercase'
+        }
+      },
       unique: {
         args: true,
-        msg: 'This email already exist'
+        msg: 'This email is already taken, enter a new email address'
       },
-      validate: {
-        notEmpty: {
-          msg: 'Email is required.'
-        }
-      }
     },
     password: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        notEmpty: {
-          msg: 'password is required'
-        }
+        notEmpty: true
       }
     },
   });
