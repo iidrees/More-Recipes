@@ -1,13 +1,17 @@
 import { Reviews } from '../model';
 /**
  * This is a Reviews class that allows a user post a review to a recipe
+ * @export
+ * @class Review
  */
 export default class Review {
-  /**
+/**
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} JSON -the JSON returned to the client as response
- * @return {object} Reviews - returns the reviews added to a recipe
+ * @return {object} Reviews - returns the reviews added to a recipe 
+ * @static
+ * @memberof Review
  */
   static postReviews(req, res) {
     /* Grab values from the request object for authentication */
@@ -17,7 +21,7 @@ export default class Review {
     if (!userId) {
       /* if not authenticated, user will not be allowed access to resource */
       return res.status(401).send({
-        success: false,
+        status: 'Fail',
         message: 'You are not authorized to post a review, please send your token in the header'
       });
     }
@@ -29,13 +33,21 @@ export default class Review {
       })
       .then((review) => {
         res.status(201).send({
-          success: true,
+          status: 'Success',
           review,
         });
       })
       .catch(err => res.status(400).send(err));
   }
-  
+
+  /**
+   *  This is a method that allows a review to be edited
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @return {object} JSON
+   * @memberof Review
+   */
   static editReviews(req, res) {
     /* Grab values from the request object for authentication */
     const id = req.params.recipeid;
@@ -45,7 +57,7 @@ export default class Review {
     if (!userId) {
       /* if not authenticated, user will not be allowed access to resource */
       return res.status(401).send({
-        success: false,
+        status: ' Fail',
         message: 'You are not authorized to post a review, please send your token in the header'
       });
     }

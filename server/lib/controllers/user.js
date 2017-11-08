@@ -5,13 +5,16 @@ import { User } from '../model';
 
 /**
  * This is a UserSignup class that allows a client to signup
+ * @export
+ * @class UserSignup
  */
 export class UserSignup {
   /**
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} JSON - this is returned to notify the user of account creation
- * @return {object}  JSON- returns the infomatoin about the account created
+ * @static
+ * @memberof UserSignup
  */
   static signUp(req, res) {
     const { username, email } = req.body;
@@ -24,7 +27,7 @@ export class UserSignup {
         status: 'Fail',
         message: 'Password must not be less than 8 or be undefined'
       });
-    } 
+    }
     /* encrypt password and stores in the database
     along with some user information */
     password = bcrypt.hashSync(password, 10);
@@ -44,6 +47,7 @@ export class UserSignup {
       })
       .catch((err) => {
         return res.status(400).send({
+          status: 'Fail',
           message: err
         });
       });
@@ -53,13 +57,16 @@ export class UserSignup {
 /**
  * This is a UserSignin class that allows a client to signin and
  * a token is generated for the user to keep for future authentication
+ * @export
+ * @class UserSignin
  */
 export class UserSignin {
   /**
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} JSON - this is returned to notify the user of account creation
- * @return {object} JSON - returns the informatoin about the account created
+ * @static
+ * @memberof UserSignin
  */
   static signIn(req, res) {
     /* grab the username, email and password from the req.body
