@@ -9,7 +9,7 @@ export default class Vote {
     let voted = false;
     if (!userId) {
       return res.status(401).send({
-        success: false,
+        status: 'Fail',
         message: 'You are not authorized to do this.'
       });
     }
@@ -35,17 +35,14 @@ export default class Vote {
             recipeId: id,
             voted,
           })
-          .then((vote) => {
-            return res.status(201).send({
-              status: 'Success',
-              message: `${recipe.title} has been upvoted`,
-              data: {
-                recipe,
-                vote
-              }
-            });
-            // console.log('the votes', vote);
-          })
+          .then(vote => res.status(201).send({
+            status: 'Success',
+            message: `${recipe.title} has been upvoted`,
+            data: {
+              recipe,
+              vote
+            }
+          }))
           .catch(err => res.status(400).send(err));
       })
       .catch(err => res.status(400).send(err));
@@ -56,7 +53,7 @@ export default class Vote {
     const userId = req.decoded.id;
     if (!userId) {
       return res.status(401).send({
-        success: false,
+        status: 'Fail',
         message: 'You are not authorized to do this.'
       });
     }

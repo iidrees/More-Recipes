@@ -44,6 +44,7 @@ app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
 
 // Everyone should be able to see all recipes
+
 app.get('/api/v1/recipes', RecipeList.listAll);
 
 // jwt middleware to verify users trying yo hit other endpoints
@@ -63,6 +64,7 @@ app.post('/api/v1/recipes/:recipeid/addfavorite', Favorite.addFavorites);
 app.get('/api/v1/users/:userid/recipes', FavoriteRecipes.getFavorite);
 app.post('/api/v1/recipes/:recipeid/upvotes', Votes.upVotes);
 app.post('/api/v1/recipes/:recipeid/downvotes', Votes.downVotes);
+
 //
 // app.post('/api/v1/recipes/upvote', )
 

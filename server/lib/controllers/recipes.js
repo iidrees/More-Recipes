@@ -56,7 +56,31 @@ export class RecipeList {
  * and reviews
  */
   static listAll(req, res) {
-    /* Get all recipes in the database */
+    /* Get all recipes with most votes in descending order from the database */
+    const { sort, order } = req.query;
+    console.log('this sort and order', sort, order);
+    if (sort === 'upvotes' && order === 'desc') {
+      return Recipes
+        .findAll({
+          order: [['upVotes', 'DESC']]
+        })
+        .then((upvotes) => {
+          if (!upvotes) {
+            return res.status(404).send({
+              status: 'Fail',
+              message: 'No upvotes found',
+              data: upvotes
+            });
+          }
+          return res.status(200).send({
+            status: 'Success',
+            message: 'Upvotes found and displayed in descending order',
+            data: upvotes
+          });
+        })
+        .catch(err => res.status(400).send(err));
+    }
+    /* Get all recipes */
     return Recipes
       .findAll({
         include: [
