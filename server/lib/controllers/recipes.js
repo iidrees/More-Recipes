@@ -1,9 +1,6 @@
 // import Modules
 import { Recipes, Reviews, Favorites } from '../model';
 
-/* const Recipe = model.Recipes;
-const Reviews = model.Reviews;
-const Favorites = model.Favorites; */
 
 /**
  * This is a Recipes class that allows you POST a recipe
@@ -11,10 +8,12 @@ const Favorites = model.Favorites; */
 export class Recipe {
   /**
  * Post recipe into the database
+ * @static
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} the JSON returned to the client as response
- */
+ * @memberof Recipe
+  */
   static postRecipes(req, res) {
     // grab values from the req object
     const { title, content } = req.body;
@@ -36,7 +35,7 @@ export class Recipe {
       })
       .then((recipes) => {
         res.status(201).send({
-          success: true,
+          status: 'Success',
           recipe: recipes,
         });
       })
@@ -46,24 +45,28 @@ export class Recipe {
 
 /**
  * This is a Recipes class that allows you get all recipes a user has posted
+ * @export listAll method
+ * @class RecipeList
  */
 export class RecipeList {
   /**
  * parse values from the req.body & req.decoded
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} JSON -The JSON returned to the client as response containing all recipes
+ * @returns {object} JSON -The JSON returned to the client as response containing all recipes
  * and reviews
+ * @static
+ * @memberof RecipeList
  */
   static listAll(req, res) {
     /* Get all recipes with most votes in descending order from the database */
     const { sort, order } = req.query;
-    console.log('this sort and order', sort, order);
     if (sort === 'upvotes' && order === 'desc') {
+      /* Find all recipes with upVotes property and returns them in descending order */
       return Recipes
         .findAll({
           order: [['upVotes', 'DESC']]
-        })
+        })// if no upVotes is found it returns an error
         .then((upvotes) => {
           if (!upvotes) {
             return res.status(404).send({
@@ -72,6 +75,8 @@ export class RecipeList {
               data: upvotes
             });
           }
+          /* Returns a JSON array objects in descending
+          order based on the most upvotes */
           return res.status(200).send({
             status: 'Success',
             message: 'Upvotes found and displayed in descending order',
@@ -110,14 +115,18 @@ export class RecipeList {
 
 /**
  * This is a Recipes class that allows you to update a recipe
+ * @exports updateRecipe method
+ * @class RecipeUpdate
  */
 export class RecipeUpdate {
   /**
  * parse values from the req.body & req.decoded
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} JSON -The JSON returned to the client as response containing
- * the modified recipe.
+ * @return {object|JSON|array} - JSON is returned signifying success or failr of
+ *                              the modified recipe.
+ * @static
+ * @memberof RecipeUpdate
  */
   static updateRecipe(req, res) {
     /* Grab values to be used to authenticate from the request object */
@@ -143,7 +152,7 @@ export class RecipeUpdate {
             message: 'Recipe Not Found',
           });
         }
-        /* Updates the recipe */
+        /* Updates the recipe and returns the updated recipe */
         return recipe
           .update({
             title: req.body.title || recipe.title,
@@ -158,20 +167,24 @@ export class RecipeUpdate {
 
 /**
  * This is a Recipes class that allows you to delete a recipe
+ * @export deleteRecipe method
+ * @class RecipeDelete
  */
 export class RecipeDelete {
 /**
  * parse values from the req.body & req.decoded to be used to delete the recipe
+ * @static
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} JSON
+ * @return {object} JSON object notifying the success of the delete request
+ * @memberof RecipeDelete
  */
   static deleteRecipe(req, res) {
     /* Checks if user is authenticated */
     const userId = req.decoded.id;
     if (!userId) {
       return res.status(401).send({
-        success: false,
+        status: ' Fail',
         message: 'You are not authorized to post a recipe, please send your token in the header or Signup for an account to post a recipe'
       });
     }
@@ -186,13 +199,17 @@ export class RecipeDelete {
       .then((recipe) => {
         if (!recipe) {
           return res.status(404).send({
+            status: 'Fail',
             message: 'Recipe Not Found'
           });
         }
         /* Then we delete the recipe */
         return recipe
           .destroy()
-          .then(() => res.status(200).send({ message: 'Recipe successfully deleted' }))
+          .then(() => res.status(200).send({
+            status: ' Success',
+            message: 'Recipe successfully deleted'
+          }))
           .catch(err => res.status(404).send(err));
       })
       .catch(err => res.status(404).send(err));

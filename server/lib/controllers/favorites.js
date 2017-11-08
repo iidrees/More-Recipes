@@ -1,10 +1,11 @@
 // import modules
 import { Favorites, Recipes } from '../model';
 
-console.log('fave', Recipes, Favorites);
 
 /**
  * This is a Favorite class that allows a user add a favorite recipe
+ * @export
+ * @class Favorite
  */
 export class Favorite {
   /**
@@ -12,6 +13,8 @@ export class Favorite {
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} the JSON returned to the client as response
+ * @static
+ * @memberof Favorite
  */
   static addFavorites(req, res) {
     /*
@@ -46,6 +49,8 @@ export class Favorite {
 
 /**
  * This is a FavoriteRecipes class that allows a user GET his favorite recipes
+ * @export
+ * @class FavoriteRecipes
  */
 export class FavoriteRecipes {
   /**
@@ -53,6 +58,8 @@ export class FavoriteRecipes {
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} - A response object signifying success or failure of the request
+ * @static
+ * @memberof FavoriteRecipes
  */
   static getFavorite(req, res) {
     /* Grab values from the request object */

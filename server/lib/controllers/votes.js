@@ -1,8 +1,17 @@
 import { Votes, Recipes } from '../model';
-/*
-  A Votes class that allows a user to upvote or downvote a recipe
+/**
+ * A Votes class that allows a user to upvote or downvote a recipe
+ * @export
+ * @class Vote
  */
 export default class Vote {
+  /**
+   * @static
+   * @param {object} req
+   * @param {object} res response object returned to the user
+   * @returns {object} JSON showing success or failure of the request
+   * @memberof Vote
+   */
   static upVotes(req, res) {
     const id = req.params.recipeid;
     const userId = req.decoded.id;
@@ -48,6 +57,14 @@ export default class Vote {
       .catch(err => res.status(400).send(err));
   }
 
+
+  /**
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @returns {object} JSON
+   * @memberof Vote
+   */
   static downVotes(req, res) {
     const id = req.params.recipeid;
     const userId = req.decoded.id;

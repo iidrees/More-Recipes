@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { UserSignup, UserSignin } from './controllers/user';
 import { Recipe, RecipeList, RecipeUpdate, RecipeDelete } from './controllers/recipes';
-// import postReviews from './controllers/reviews';
 import Review from './controllers/reviews';
 import auth from './auth/auth';
 import Votes from './controllers/votes';
@@ -44,7 +43,6 @@ app.post('/api/v1/users/signup', UserSignup.signUp);
 app.post('/api/v1/users/signin', UserSignin.signIn);
 
 // Everyone should be able to see all recipes
-
 app.get('/api/v1/recipes', RecipeList.listAll);
 
 // jwt middleware to verify users trying yo hit other endpoints
@@ -65,8 +63,6 @@ app.get('/api/v1/users/:userid/recipes', FavoriteRecipes.getFavorite);
 app.post('/api/v1/recipes/:recipeid/upvotes', Votes.upVotes);
 app.post('/api/v1/recipes/:recipeid/downvotes', Votes.downVotes);
 
-//
-// app.post('/api/v1/recipes/upvote', )
 
 logger('dev');
 console.log('we are live on port', port);
