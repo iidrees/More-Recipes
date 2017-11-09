@@ -412,7 +412,6 @@ describe('Server, Status and Content', () => {
   });
   /* TEST FOR GETTING AND ADDING FAVORITES */
   describe('POST/add Favorites and GET Favorites', () => {
-    
     it('should return "No Favorite Found, Add a Favorite', (done) => {
       request(app)
         .get(`/api/v1/users/${1}/recipes`)
