@@ -18,13 +18,7 @@ export default class Review {
     const id = req.params.recipeid;
     const userId = req.decoded.id;
     const { content } = req.body;
-    if (!userId) {
-      /* if not authenticated, user will not be allowed access to resource */
-      return res.status(401).send({
-        status: 'Fail',
-        message: 'You are not authorized to post a review, please send your token in the header'
-      });
-    }
+    console.log('this is the ID and content', id, content);
     /* When user is authenticated, reviews is created in the database */
     return Reviews
       .create({
@@ -34,10 +28,14 @@ export default class Review {
       .then((review) => {
         res.status(201).send({
           status: 'Success',
-          review,
+          message: 'Review has been added',
+          data: review
         });
       })
-      .catch(err => res.status(400).send(err));
+      .catch(() => res.status(400).send({
+        status: 'Fail',
+        message: 'Please enter the correct recipe ID'
+      }));
   }
 
   /**
@@ -52,15 +50,7 @@ export default class Review {
     /* Grab values from the request object for authentication */
     const id = req.params.recipeid;
     const reviewsId = req.params.id;
-    const userId = req.decoded.id;
     const { content } = req.body;
-    if (!userId) {
-      /* if not authenticated, user will not be allowed access to resource */
-      return res.status(401).send({
-        status: ' Fail',
-        message: 'You are not authorized to post a review, please send your token in the header'
-      });
-    }
     return Reviews
       .find({
         where: {
@@ -77,16 +67,18 @@ export default class Review {
         }
         return review
           .update({
-            content: content || Review.content
+            content: content || Reviews.content
           })
           .then(newReviews => res.status(201).send({
             status: 'Success',
-            Message: 'Reviews updated',
+            message: 'Reviews updated',
             data: newReviews
-          }))
-          .catch(err => res.status(400).send(err));
+          }));
       })
-      .catch(err => res.status(400).send(err));
+      .catch(() => res.status(400).send({
+        status: 'Fail',
+        message: 'Please enter the correct recipe ID and Review ID'
+      }));
   }
 
 }

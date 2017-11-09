@@ -19,7 +19,7 @@ export default (sequelize, DataTypes) => {
     });
   };
   Favorites.associate = (model) => {
-    Favorites.belongsTo(model.User, {
+    Favorites.belongsTo(model.Users, {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
     });

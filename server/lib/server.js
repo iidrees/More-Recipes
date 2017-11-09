@@ -20,7 +20,7 @@ dotenv.config();
 app.use(logger('dev'));
 
 // Application port
-const port = process.env.PORT || 5002;
+const port = process.env.PORT || 5005;
 
 // set up body-parser to parse incoming request data
 app.use(bodyParser.json());

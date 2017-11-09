@@ -1,6 +1,6 @@
 // User Model
 export default (sequelize, Sequelize) => {
-  const User = sequelize.define('User', {
+  const Users = sequelize.define('Users', {
     username: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -34,19 +34,19 @@ export default (sequelize, Sequelize) => {
     },
   });
   /* User has a relationship with Recipes, Favorites and Votes */
-  User.associate = (model) => {
-    User.hasMany(model.Recipes, {
+  Users.associate = (model) => {
+    Users.hasMany(model.Recipes, {
       foreignKey: 'userId',
       as: 'recipes',
     });
-    User.hasMany(model.Favorites, {
+    Users.hasMany(model.Favorites, {
       foreignKey: 'userId',
       as: 'favorites'
     });
-    User.hasOne(model.Votes, {
+    Users.hasOne(model.Votes, {
       foreignKey: 'userId',
       as: 'votes'
     });
   };
-  return User;
+  return Users;
 };
