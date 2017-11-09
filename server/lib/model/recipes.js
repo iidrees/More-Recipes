@@ -29,7 +29,7 @@ export default (sequelize, DataTypes) => {
       foreignKey: 'recipeId',
       as: 'favorites'
     });
-    Recipes.belongsTo(model.User, {
+    Recipes.belongsTo(model.Users, {
       foreignKey: 'userId',
       onDelete: 'CASCADE',
     });

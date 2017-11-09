@@ -1,9 +1,9 @@
 import { assert } from 'chai';
 import request from 'supertest';
 import app from '../lib/server';
-import { User, Recipes, Favorites, Reviews, Votes } from '../lib/model';
+import { Users, Recipes, Favorites, Reviews, Votes } from '../lib/model';
 
-User.destroy({
+Users.destroy({
   cascade: true,
   truncate: true,
   restartIdentity: true

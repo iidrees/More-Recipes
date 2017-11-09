@@ -1,7 +1,7 @@
 // import dependencies
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User } from '../model';
+import { Users } from '../model';
 
 /**
  * This is a UserSignup class that allows a client to signup
@@ -29,7 +29,7 @@ export class UserSignup {
     /* encrypt password and stores in the database
     along with some user information */
     password = bcrypt.hashSync(password, 10);
-    return User
+    return Users
       .create({
         username,
         email,
@@ -78,7 +78,7 @@ export class UserSignin {
         message: 'Please enter your username and password'
       });
     }
-    return User // check the db if user has already signedup
+    return Users // check the db if user has already signedup
       .findOne({
         where: {
           username,
