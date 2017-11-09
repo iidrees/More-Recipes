@@ -6,6 +6,9 @@ node_js:
 script:
   - npm run seq:create
   - npm test
+  
+cache:
+ - npm install
 
 services:
   - postgresql
