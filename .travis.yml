@@ -2,6 +2,8 @@ language: node_js
 
 node_js:
   - "8.2.1"
+env: 
+  - DB=more-recipes-db
 
 script:
   - npm test
@@ -11,6 +13,7 @@ services:
 
 before_script:
   - psql -c 'create database more_recipes_db;' -U postgres
+  - cp database.yml.travis config/database.yml
 
 after_success:
    - npm run coverage
