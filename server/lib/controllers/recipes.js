@@ -23,7 +23,7 @@ export class Recipe {
     if (!userId) {
       return res.status(401).send({
         status: 'Fail',
-        message: 'You are not authorized to post a recipe, please send your token in the header'
+        message: 'Unauthorised, please send token'
       });
     }
     /* When user is authenticated, we store data into the database */
@@ -36,6 +36,7 @@ export class Recipe {
       .then((recipes) => {
         res.status(201).send({
           status: 'Success',
+          message: 'Recipe added',
           recipe: recipes,
         });
       })
@@ -102,11 +103,17 @@ export class RecipeList {
       .then((recipe) => {
         /* Checks if db is empty and returns a notice to enter a recipe */
         if (recipe.length === 0) {
-          return res.status(200).send({
-            message: 'No Recipe available, please enter a recipe.'
+          return res.status(400).send({
+            status: 'Fail',
+            message: 'No Recipe available, please enter a recipe.',
+            data: recipe
           });
         }
-        return res.status(200).send(recipe);
+        return res.status(200).send({
+          status: 'Success',
+          message: 'Recipes below',
+          data: recipe
+        });
       })
       .catch(error => res.status(400).send(error));
   }
@@ -131,13 +138,7 @@ export class RecipeUpdate {
   static updateRecipe(req, res) {
     /* Grab values to be used to authenticate from the request object */
     const userId = req.decoded.id;
-    if (!userId) {
-      // if auth fails it returns this error
-      return res.status(401).send({
-        success: false,
-        message: 'You are not authorized to post a recipe, please send your token in the header'
-      });
-    }
+    
     /* Finds a recipe to be updated */
     return Recipes
       .find({
@@ -149,7 +150,9 @@ export class RecipeUpdate {
       .then((recipe) => {
         if (!recipe) {
           return res.status(404).send({
+            status: 'Fail',
             message: 'Recipe Not Found',
+            data: recipe
           });
         }
         /* Updates the recipe and returns the updated recipe */
@@ -158,10 +161,17 @@ export class RecipeUpdate {
             title: req.body.title || recipe.title,
             content: req.body.content || recipe.content
           })
-          .then(updatedRecipe => res.status(200).send(updatedRecipe))
-          .catch(err => res.status(400).send(err));
+          .then(updatedRecipe => res.status(200).send({
+            status: 'Success',
+            message: 'Recipe updated successfully',
+            data: updatedRecipe
+          }));
+        // .catch(err => res.status(400).send(err));
       })
-      .catch(err => res.status(400).send(err));
+      .catch(() => res.status(400).send({
+        status: 'Fail',
+        message: 'Please enter a number representing the recipe'
+      }));
   }
 }
 
@@ -182,12 +192,7 @@ export class RecipeDelete {
   static deleteRecipe(req, res) {
     /* Checks if user is authenticated */
     const userId = req.decoded.id;
-    if (!userId) {
-      return res.status(401).send({
-        status: ' Fail',
-        message: 'You are not authorized to post a recipe, please send your token in the header or Signup for an account to post a recipe'
-      });
-    }
+    
     /* if authenticated, we find the recipe we want to delete */
     return Recipes
       .find({
@@ -207,12 +212,15 @@ export class RecipeDelete {
         return recipe
           .destroy()
           .then(() => res.status(200).send({
-            status: ' Success',
+            status: 'Success',
             message: 'Recipe successfully deleted'
-          }))
-          .catch(err => res.status(404).send(err));
+          }));
+        // .catch(err => res.status(404).send(err));
       })
-      .catch(err => res.status(404).send(err));
+      .catch(() => res.status(404).send({
+        status: 'Fail',
+        message: 'Please enter a number representing the recipe'
+      }));
   }
 }
 
