@@ -104,6 +104,7 @@ describe('Server, Status and Content', () => {
         .catch(err => done(err));
     });
   });
+
   /* Test for the signin endpoint */
   describe('Signin with "/api/v1/users/signin"', () => {
     it('should return signin error with empty fields', (done) => {
@@ -176,7 +177,7 @@ describe('Server, Status and Content', () => {
   });
 
   /* TEST FOR RECIPE ENDPOINT */
-  describe('GET, POST, PUT and DELETE Recipes', () => {
+  describe('GET, POST and PUT Recipes', () => {
     /* TEST for GET and POST recipes */
     it('should return an error if no recipe', (done) => {
       request(app)
@@ -313,48 +314,6 @@ describe('Server, Status and Content', () => {
         })
         .catch(err => done(err));
     });
-    /* TEST for DELETE */
-    /* it('should delete a recipe', (done) => {
-      request(app)
-        .delete(`/api/v1/recipes/${1}`)
-        .set('x-access-token', token)
-        .expect(200)
-        .then((res) => {
-          assert.deepEqual(res.body.status, 'Success');
-          assert.deepEqual(res.body.message, 'Recipe successfully deleted');
-          assert.deepEqual(res.status, 200);
-          done();
-        })
-        .catch(err => done(err));
-    }); */
-    it('should return an error when no recipe found', (done) => {
-      request(app)
-        .delete(`/api/v1/recipes/${5}`)
-        .set('x-access-token', token)
-        .expect(404)
-        .then((res) => {
-          assert.deepEqual(res.body.status, 'Fail');
-          assert.deepEqual(res.body.message, 'Recipe Not Found');
-          assert.deepEqual(res.status, 404);
-          done();
-        })
-        .catch(err => done(err));
-    });
-    it('should return "undefined" for a string params', (done) => {
-      let newkid;
-      request(app)
-        .delete(`/api/v1/recipes/${newkid}`)
-        .set('x-access-token', token)
-        .expect(404)
-        .then((res) => {
-          // console.log(res.body.data);
-          assert.deepEqual(res.body.status, 'Fail');
-          assert.deepEqual(res.body.message, 'Please enter a number representing the recipe');
-          assert.deepEqual(res.status, 404);
-          done();
-        })
-        .catch(err => done(err));
-    });
   });
 
   /* TEST FOR REVIEWS ENDPOINT */
@@ -446,6 +405,210 @@ describe('Server, Status and Content', () => {
           assert.deepEqual(res.body.status, 'Fail');
           assert.deepEqual(res.body.message, 'Please enter the correct recipe ID');
           assert.deepEqual(res.status, 400);
+          done();
+        })
+        .catch(err => done(err));
+    });
+  });
+  /* TEST FOR GETTING AND ADDING FAVORITES */
+  describe('POST/add Favorites and GET Favorites', () => {
+    
+    it('should return "No Favorite Found, Add a Favorite', (done) => {
+      request(app)
+        .get(`/api/v1/users/${1}/recipes`)
+        .set('x-access-token', token)
+        .expect(404)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.status, 404);
+          assert.deepEqual(res.body.status, 'Fail');
+          assert.deepEqual(res.body.message, 'Favorite Not Found');
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should add Favorite', (done) => {
+      request(app)
+        .post(`/api/v1/recipes/${1}/addfavorite`)
+        .set('x-access-token', token)
+        .expect(201)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Favorite Recipe Added');
+          assert.typeOf(res.body.data, 'object');
+          assert.deepEqual(res.status, 201);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return 400 "Bad request" error for invalid input', (done) => {
+      const newNum = ' ';
+      request(app)
+        .post(`/api/v1/recipes/${newNum}/addfavorite`)
+        .set('x-access-token', token)
+        .expect(400)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.body.status, 'Fail');
+          assert.deepEqual(res.body.message, 'Invalid parameter input');
+          assert.deepEqual(res.status, 400);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should get favorite recipe of a user', (done) => {
+      request(app)
+        .get(`/api/v1/users/${1}/recipes`)
+        .set('x-access-token', token)
+        .expect(200)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.status, 200);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'This is your Favorite Recipes');
+          assert.typeOf(res.body.data, 'array');
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "401 Unauthorised" error ', (done) => {
+      request(app)
+        .get(`/api/v1/users/${4}/recipes`)
+        .set('x-access-token', token)
+        .expect(401)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.status, 401);
+          assert.deepEqual(res.body.status, 'Fail');
+          assert.deepEqual(res.body.message, 'You are unauthorised to view this resource');
+          done();
+        })
+        .catch(err => done(err));
+    });
+  });
+
+  /* TEST FOR UPVOTES AND DOWNVOTES */
+  describe('Upvote and Downvote a recipe', () => {
+    it('should return "404 Recipe Not Found" for Upvotes', (done) => {
+      request(app)
+        .post(`/api/v1/recipes/${3}/upvotes`)
+        .set('x-access-token', token)
+        .expect(404)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.body.status, 'Fail');
+          assert.deepEqual(res.body.message, 'Recipe not found');
+          assert.deepEqual(res.status, 404);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "201 Success" for a successful vote', (done) => {
+      request(app)
+        .post(`/api/v1/recipes/${1}/upvotes`)
+        .set('x-access-token', token)
+        .expect(201)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.status, 201);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Beans and Bread Recipe has been upvoted');
+          assert.typeOf(res.body.data, 'object');
+          done();
+        })
+        .catch(err => done(err));
+    });
+    // downvotes
+    it('should return "404 Recipe Not Found" for downvoted recipes not in database', (done) => {
+      request(app)
+        .post(`/api/v1/recipes/${3}/downvotes`)
+        .set('x-access-token', token)
+        .expect(404)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.body.status, 'Fail');
+          assert.deepEqual(res.body.message, 'Recipe not found');
+          assert.deepEqual(res.status, 404);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "201 Success" for a successful downovote', (done) => {
+      request(app)
+        .post(`/api/v1/recipes/${1}/downvotes`)
+        .set('x-access-token', token)
+        .expect(201)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.status, 201);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Beans and Bread Recipe has been downvoted');
+          assert.typeOf(res.body.data, 'object');
+          done();
+        })
+        .catch(err => done(err));
+    });
+  });
+  /*  TEST for getting Upvotes in descending order and deleting a recipe */
+  describe('GET most upvotes in descending order', () => {
+    it('should get recipes with most upvotes in descending order', (done) => {
+      request(app)
+        .get('/api/v1/recipes')
+        .set('x-access-token', token)
+        .query({ sort: 'upvotes', order: 'desc' })
+        .expect(200)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.status, 200);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Upvotes found and displayed in descending order');
+          assert.typeOf(res.body.data, 'array');
+          done();
+        })
+        .catch(err => done(err));
+    });
+  });
+  /* TEST for DELETE */
+  describe('Delete recipes', () => {
+    it('should return an error when no recipe found', (done) => {
+      request(app)
+        .delete(`/api/v1/recipes/${5}`)
+        .set('x-access-token', token)
+        .expect(404)
+        .then((res) => {
+          assert.deepEqual(res.body.status, 'Fail');
+          assert.deepEqual(res.body.message, 'Recipe Not Found');
+          assert.deepEqual(res.status, 404);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should return "undefined" for a string params', (done) => {
+      let newkid;
+      request(app)
+        .delete(`/api/v1/recipes/${newkid}`)
+        .set('x-access-token', token)
+        .expect(404)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.body.status, 'Fail');
+          assert.deepEqual(res.body.message, 'Please enter a number');
+          assert.deepEqual(res.status, 404);
+          done();
+        })
+        .catch(err => done(err));
+    });
+    it('should delete a recipe', (done) => {
+      request(app)
+        .delete(`/api/v1/recipes/${1}`)
+        .set('x-access-token', token)
+        .expect(200)
+        .then((res) => {
+          console.log(res.body);
+          assert.deepEqual(res.body.status, 'Success');
+          assert.deepEqual(res.body.message, 'Recipe successfully deleted');
+          assert.deepEqual(res.status, 200);
           done();
         })
         .catch(err => done(err));

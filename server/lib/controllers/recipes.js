@@ -18,14 +18,6 @@ export class Recipe {
     // grab values from the req object
     const { title, content } = req.body;
     const userId = req.decoded.id;
-    /* Authenticates user, returns a status
-    message asking the user to supply token */
-    if (!userId) {
-      return res.status(401).send({
-        status: 'Fail',
-        message: 'Unauthorised, please send token'
-      });
-    }
     /* When user is authenticated, we store data into the database */
     return Recipes
       .create({
@@ -219,7 +211,7 @@ export class RecipeDelete {
       })
       .catch(() => res.status(404).send({
         status: 'Fail',
-        message: 'Please enter a number representing the recipe'
+        message: 'Please enter a number'
       }));
   }
 }
