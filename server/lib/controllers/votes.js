@@ -16,12 +16,6 @@ export default class Vote {
     const id = req.params.recipeid;
     const userId = req.decoded.id;
     let voted = false;
-    if (!userId) {
-      return res.status(401).send({
-        status: 'Fail',
-        message: 'You are not authorized to do this.'
-      });
-    }
     return Recipes
       .find({
         where: {
@@ -32,6 +26,7 @@ export default class Vote {
       .then((recipe) => {
         if (!recipe) {
           return res.status(404).send({
+            status: 'Fail',
             message: 'Recipe not found',
             data: recipe,
           });
@@ -68,12 +63,6 @@ export default class Vote {
   static downVotes(req, res) {
     const id = req.params.recipeid;
     const userId = req.decoded.id;
-    if (!userId) {
-      return res.status(401).send({
-        status: 'Fail',
-        message: 'You are not authorized to do this.'
-      });
-    }
     return Recipes
       .find({
         where: {
@@ -84,11 +73,10 @@ export default class Vote {
       .then((recipe) => {
         if (!recipe) {
           return res.status(404).send({
-            message: 'Recipe not found',
-            data: recipe,
+            status: 'Fail',
+            message: 'Recipe not found'
           });
         }
-        // recipe.decrement('upVotes', { by: 1 });
         recipe.decrement('downVotes', { by: 1 });
         return res.status(201).send({
           status: 'Success',

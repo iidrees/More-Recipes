@@ -23,13 +23,6 @@ export class Favorite {
     const recipeId = req.params.recipeid;
     const userId = req.decoded.id;
     console.log(recipeId, userId);
-    if (!userId) {
-      /*  if user not authenticated, return this response */
-      return res.status(401).send({
-        status: 'fail',
-        message: 'You are not authorized to post a recipe, please send your token in the header'
-      });
-    }
     /* else, add the userid and favorite recipeid to the database */
     return Favorites
       .create({
@@ -43,7 +36,10 @@ export class Favorite {
           data: fave,
         });
       })
-      .catch(err => res.status(400).send(err));
+      .catch(() => res.status(400).send({
+        status: 'Fail',
+        message: 'Invalid parameter input'
+      }));
   }
 }
 
@@ -80,12 +76,17 @@ export class FavoriteRecipes {
         }
       })
       .then((fave) => {
+        if (fave.length === 0) {
+          return res.status(404).send({
+            status: 'Fail',
+            message: 'Favorite Not Found'
+          });
+        }
         return res.status(200).send({
           status: 'Success',
           message: 'This is your Favorite Recipes',
           data: fave
         });
-      })
-      .catch(err => res.status(400).send(err));
+      });
   }
 }

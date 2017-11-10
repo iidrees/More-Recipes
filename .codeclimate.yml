@@ -9,6 +9,8 @@ engines:
       - javascript
   fixme:
     enabled: true
+  eslint:
+    enabled: true
 ratings:
   paths:
   - "server/*.js"
@@ -16,5 +18,8 @@ ratings:
 exclude_paths:
 - node_modules/
 - client/
-- server/models/
+- server/lib/model/
+- server/lib/migrations/
 - template/
+- .nyc_output
+- coverage
