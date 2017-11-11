@@ -41,9 +41,6 @@
             <li class="nav-item active">
               <a class="nav-link" href="recipeListing.html"><strong> Recipe Listing/Catalog</strong><span class="sr-only">(current)</span></a>
             </li>
-           <li class="nav-item ">
-              <a class="nav-link" href="recipeDetails.html">Recipe Details</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="addRecipe.html">Add Recipe</a>
             </li>
@@ -88,73 +85,79 @@
     </div>
     
     <div class="container" id="recipe-list"><!-- Container div for the Recipe listing, Most popular, and Search section-->
-      <div class="row">
+      <div class="row wrapper-row">
         <div class="col-sm-8"><!-- Div for the Recipe Listing section -->
           <h3>Recipe List/Catalog   <span><i class="fa fa-archive" aria-hidden="true"></i></span></h3>
           <div class="card-deck">
-            <div class="card">
+            <div class="card" style="height: 20rem">
               <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
               <div class="card-block">
                 <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
                     Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
                   </a></h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-              </div>
-              
+                  <button type="button" class="btn btn-outline btn-sm" id="up-vote"><span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span></button>
+                  <button type="button" class="btn btn-outline btn-sm" id="down-vote"><span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span></button>
+                  <button type="button" class="btn btn-outline" id="heart"><span><i class="fa fa-heart" aria-hidden="true"></i></span></button>
+              </div>              
             </div>
-            <div class="card">
+            <div class="card" style="height: 20rem">
               <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
               <div class="card-block">
                 <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
                     Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
                   </a></h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-              </div>
+                  <button type="button" class="btn btn-outline btn-sm" id="up-vote"><span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span></button>
+                  <button type="button" class="btn btn-outline btn-sm" id="down-vote"><span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span></button>
+                  <button type="button" class="btn btn-outline" id="heart"><span><i class="fa fa-heart" aria-hidden="true"></i></span></button>
+              </div>              
             </div>
-            <div class="card">
+            <div class="card" style="height: 20rem">
               <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
               <div class="card-block">
                 <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
                     Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
                   </a></h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                </div>
+                  <button type="button" class="btn btn-outline btn-sm" id="up-vote"><span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span></button>
+                  <button type="button" class="btn btn-outline btn-sm" id="down-vote"><span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span></button>
+                  <button type="button" class="btn btn-outline" id="heart"><span><i class="fa fa-heart" aria-hidden="true"></i></span></button>
+              </div>              
             </div>
           </div>
     
             <div class="card-deck">
-            <div class="card">
-              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
-              <div class="card-block">
-                <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
-                    Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
-                  </a></h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
-                </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
-              <div class="card-block">
-                <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
-                    Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
-                  </a></h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                
+              <div class="card" style="height: 20rem">
+                <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
+                      Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+                    </a></h4>
+                    <button type="button" class="btn btn-outline btn-sm" id="up-vote"><span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span></button>
+                    <button type="button" class="btn btn-outline btn-sm" id="down-vote"><span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span></button>
+                    <button type="button" class="btn btn-outline" id="heart"><span><i class="fa fa-heart" aria-hidden="true"></i></span></button>
+                </div>              
               </div>
-            </div>
-            <div class="card">
-              <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
-              <div class="card-block">
-                <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
-                    Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
-                  </a></h4>
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-
+              <div class="card" style="height: 20rem">
+                <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
+                      Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+                    </a></h4>
+                    <button type="button" class="btn btn-outline btn-sm" id="up-vote"><span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span></button>
+                    <button type="button" class="btn btn-outline btn-sm" id="down-vote"><span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span></button>
+                    <button type="button" class="btn btn-outline" id="heart"><span><i class="fa fa-heart" aria-hidden="true"></i></span></button>
+                </div>              
               </div>
-            </div>
+              <div class="card" style="height: 20rem">
+                <img class="card-img-top" src="./images/meat-pie.jpg" alt="Card image cap">
+                <div class="card-block">
+                  <h4 class="card-title"><a href="recipe.html" class="list-group-item ">
+                      Ewa Agoyin &amp; Agege Bread Recipe   <span><i class="fa fa-cutlery" aria-hidden="true"></i></span>
+                    </a></h4>
+                    <button type="button" class="btn btn-outline btn-sm" id="up-vote"><span><i class="fa fa-thumbs-up" aria-hidden="true"></i></span> <span id="count-up">0</span></button>
+                    <button type="button" class="btn btn-outline btn-sm" id="down-vote"><span><i class="fa fa-thumbs-down" aria-hidden="true"></i></span> <span id="count-down">0</span></button>
+                    <button type="button" class="btn btn-outline" id="heart"><span><i class="fa fa-heart" aria-hidden="true"></i></span></button>
+                </div>              
+              </div>
           </div>
         </div><!-- End div for Recipe Listing section-->
 
@@ -184,14 +187,10 @@
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
-    <div style="margin-bottom:20px">
-      
-    </div>
+    
     <div class="footer"><!-- Footer-->
       <p id="footer-para" class="text-center">
         <strong>Made with  <span id="red-footer"><i class="fa fa-heart" aria-hidden="true"></i></span>  by Idrees Ibraheem &copy; 2017</strong><strong><a id="email" href="mailto:idreesibraheem@gmail.com"> Contact Me <span id="red"><i class="fa fa-heart" aria-hidden="true"></i></span> </a></strong></p>
     </div>
-      
-
   </body>
 </html>

@@ -1,33 +1,57 @@
 
 
 /*BK-COVER*/
- #background-cover {
-  background-image: url('../images/ingredients-food.jpg'); 
+/*  #background-cover {
+  background-image: url('../images/food-landing.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
 
+} */
+#background-cover { 
+  background: url('../images/food-landing.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 .jumbotron {
-  margin-bottom: 0px;
-  opacity: 0.9;
+  opacity: 0.8;
   color: #fff;
   background: #000
+}
+header {
+  margin-bottom: 55px;
 }
 /*Heading tags*/
 h1 {
   font-family: 'Roboto Condensed', sans-serif;
   font-size: 40px;
-  color: #5DBCD2;
+  color: black;
   font-style: italic;
   font-weight: bold; 
-  margin-top: 70px;
+  margin-top: 10px;
+}
+#landing-header {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 40px;
+  color: rgb(172, 119, 119);
+  font-style: italic;
+  font-weight: bold; 
+  margin-top: 10px;
 }
 .card {
   margin-bottom: 15px;
+  opacity: 0.8;
+  color: #fff;
+  background: #000
 }
 
 /* signup, signin-page*/
 #signin-page, #signup-page {
   background: url('../images/curls/curl.png');
-  background-color: white;
+  
+  color: #fff;
+  background: rgb(78, 76, 76)
 }
 
 @media(min-width: 768px) {
@@ -38,18 +62,10 @@ h1 {
 }
 
 #form-signin, #form-signup {
-  margin-top: 200px;
+  margin-top: 100px;
   margin-bottom: 130px
 }
-/*Home page*/
-#home {
-  background-image: url('../images/eight_horns.png');
-  background-repeat: no-repeat;
-  position: center;
-  background-size: cover;
-  height: 400px;
-  padding-top: 20px;
-}
+
  .home-row {
    margin: 20px 180px 5px 10px;
  }
@@ -63,13 +79,20 @@ h1 {
 
 
 /*Recipe listing*/
-#recipe-listing {
-  background-image: url('../images/doodles.png');
-  background-repeat: no-repeat;
-  position: center;
-  background-size: cover, cover;
-  height: 400px;
-  padding-top: 20px;
+body::after {
+  content: "";
+  background: url('../images/jollof-listing.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 #reci-pop-search {
   margin-left: 50px;
@@ -147,7 +170,37 @@ ol li {
 #red {
   color: red;
 }
+/* .footer {
+  
+  
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  flex: 1 0 auto;
+} */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
 .footer {
-  background-color: grey;
-  margin-top: 0px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 40px; 
+}
+#heart  {
+  color: red;
 }
