@@ -13,7 +13,7 @@
     "test": "nyc _mocha server/test --require babel-register --exit",
     "test:coverage": "nyc mocha server/test/test.js --require babel-register --exit && nyc report --reporter=text-lcov",
     "coverage": "npm test && nyc report --reporter=text-lcov | coveralls",
-    "cover": "istanbul cover _mocha server/test/test.js"
+    "cover": "nyc report --reporter=text-lcov | coveralls"
   },
   "keywords": [
     "Node",

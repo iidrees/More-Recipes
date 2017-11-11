@@ -1,3 +1,2 @@
 service_name: "travis-ci"
 service_job_id: "297474688"
-repo_token: process.env.repo_token
