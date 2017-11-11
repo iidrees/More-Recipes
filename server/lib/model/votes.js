@@ -13,7 +13,7 @@ export default (sequelize, DataTypes) => {
   /* Votes has a relationship with User and Recipes */
 
   Votes.associate = (model) => {
-    Votes.belongsTo(model.User, {
+    Votes.belongsTo(model.Users, {
       foreignKey: 'userId',
     });
     Votes.belongsTo(model.Recipes, {

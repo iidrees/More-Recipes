@@ -1,49 +1,89 @@
 import { Votes, Recipes } from '../model';
-
-
-const voted = false;
-/*
-  A Votes class that allows a user to upvote or downvote a recipe
+/**
+ * A Votes class that allows a user to upvote or downvote a recipe
+ * @export
+ * @class Vote
  */
 export default class Vote {
-  static makeUpVotes(req, res) {
-    const recipeId = req.params.recipeid;
+  /**
+   * @static
+   * @param {object} req
+   * @param {object} res response object returned to the user
+   * @returns {object} JSON showing success or failure of the request
+   * @memberof Vote
+   */
+  static upVotes(req, res) {
+    const id = req.params.recipeid;
     const userId = req.decoded.id;
-    if (!userId) {
-      return res.status(401).send({
-        success: false,
-        message: 'You are not authorized to post a recipe, please send your token in the header'
-      });
-    }
-    return Votes
+    let voted = false;
+    return Recipes
       .find({
         where: {
           userId,
-          recipeId,
-          voted: true
+          id
         }
       })
       .then((recipe) => {
-        if (recipe) {
-          return res.status(200).send({
-            message: 'You have voted for this recipe',
+        if (!recipe) {
+          return res.status(404).send({
+            status: 'Fail',
+            message: 'Recipe not found',
             data: recipe,
           });
         }
-        Votes
+        recipe.increment('upVotes', { by: 1 });
+        voted = true;
+        return Votes // need re-migrate table again in order to test this elaborately
           .create({
             userId,
-            recipeId,
+            recipeId: id,
             voted,
           })
-          .then((votes) => {
-            Recipes.increment(upvotes);
-            res.status(201).send({
-              status: 'Success',
-              votes,
-            });
-          })
+          .then(vote => res.status(201).send({
+            status: 'Success',
+            message: `${recipe.title} has been upvoted`,
+            data: {
+              recipe,
+              vote
+            }
+          }))
           .catch(err => res.status(400).send(err));
-      });
+      })
+      .catch(err => res.status(400).send(err));
+  }
+
+
+  /**
+   * @static
+   * @param {any} req
+   * @param {any} res
+   * @returns {object} JSON
+   * @memberof Vote
+   */
+  static downVotes(req, res) {
+    const id = req.params.recipeid;
+    const userId = req.decoded.id;
+    return Recipes
+      .find({
+        where: {
+          userId,
+          id
+        }
+      })
+      .then((recipe) => {
+        if (!recipe) {
+          return res.status(404).send({
+            status: 'Fail',
+            message: 'Recipe not found'
+          });
+        }
+        recipe.decrement('downVotes', { by: 1 });
+        return res.status(201).send({
+          status: 'Success',
+          message: `${recipe.title} has been downvoted`,
+          data: recipe,
+        });
+      })
+      .catch(err => res.status(400).send(err));
   }
 }

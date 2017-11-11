@@ -34,8 +34,6 @@
                     <span class="navbar-toggler-icon"></span>
                   </button>
                   <a class="navbar-brand" href="#">More-Recipes!</a>
-          
-                  
                 </nav>
         </header><!-- End Header/Navbar -->
     <div id="form-signin" class="container">
@@ -48,25 +46,31 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-3 field-label-responsive">
+                    <label for="name">Username</label>
+                </div>
                 <div class="col-md-6">
-                    <div class="form-group has-danger">
-                        <label class="sr-only" for="email">E-Mail Address</label>
+                    <div class="form-group">
                         <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                            <input type="text" name="email" class="form-control" id="email"
-                                   placeholder="you@example.com" required autofocus>
+                            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user"></i></div>
+                            <input type="text" name="name" class="form-control" id="name"
+                                   placeholder="Damilola Naruto" required autofocus>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-control-feedback">
-                        
+                            <span class="text-danger align-middle">
+                                <!-- Put name validation error messages here -->
+                            </span>
                     </div>
                 </div>
             </div>
+            
             <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-3 field-label-responsive">
+                    <label for="name">Password</label>
+                </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="sr-only" for="password">Password</label>
@@ -80,6 +84,22 @@
                 <div class="col-md-3">
                     <div class="form-control-feedback">
                         
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 field-label-responsive">
+                    <label for="password">Confirm Password</label>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                            <div class="input-group-addon" style="width: 2.6rem">
+                                <i class="fa fa-repeat"></i>
+                            </div>
+                            <input type="password" name="password-confirmation" class="form-control"
+                                   id="password-confirm" placeholder="Password" required>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,7 +118,7 @@
             <div class="row" style="padding-top: 1rem">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
-                    <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i>SIgn-in</button>
+                    <button type="submit" class="btn btn-success">  Sign-in <span> <i class="fa fa-sign-in"></i></span></button>
                     <a class="btn btn-link" href="/password/reset">Forgot Your Password?</a>
                 </div>
             </div>

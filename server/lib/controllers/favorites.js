@@ -1,8 +1,11 @@
 // import modules
 import { Favorites, Recipes } from '../model';
 
+
 /**
  * This is a Favorite class that allows a user add a favorite recipe
+ * @export
+ * @class Favorite
  */
 export class Favorite {
   /**
@@ -10,6 +13,8 @@ export class Favorite {
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} the JSON returned to the client as response
+ * @static
+ * @memberof Favorite
  */
   static addFavorites(req, res) {
     /*
@@ -18,13 +23,6 @@ export class Favorite {
     const recipeId = req.params.recipeid;
     const userId = req.decoded.id;
     console.log(recipeId, userId);
-    if (!userId) {
-      /*  if user not authenticated, return this response */
-      return res.status(401).send({
-        status: 'fail',
-        message: 'You are not authorized to post a recipe, please send your token in the header'
-      });
-    }
     /* else, add the userid and favorite recipeid to the database */
     return Favorites
       .create({
@@ -34,23 +32,30 @@ export class Favorite {
       .then((fave) => {
         return res.status(201).send({
           status: 'Success',
-          message: 'Favorite recipe added',
+          message: 'Favorite Recipe Added',
           data: fave,
         });
       })
-      .catch(err => res.status(400).send(err));
+      .catch(() => res.status(400).send({
+        status: 'Fail',
+        message: 'Invalid parameter input'
+      }));
   }
 }
 
 /**
  * This is a FavoriteRecipes class that allows a user GET his favorite recipes
+ * @export
+ * @class FavoriteRecipes
  */
 export class FavoriteRecipes {
   /**
  * Post recipe into the database
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} the JSON returned to the client as response
+ * @return {object} - A response object signifying success or failure of the request
+ * @static
+ * @memberof FavoriteRecipes
  */
   static getFavorite(req, res) {
     /* Grab values from the request object */
@@ -65,22 +70,23 @@ export class FavoriteRecipes {
     }
     /* if user authenticated, find the user, and add the recipes they love too */
     return Favorites
-      .find({
+      .findAll({
         where: {
-          id,
-        },
-        include: [{
-          model: Recipes,
-          as: 'recipes'
-        }]
+          userId,
+        }
       })
       .then((fave) => {
+        if (fave.length === 0) {
+          return res.status(404).send({
+            status: 'Fail',
+            message: 'Favorite Not Found'
+          });
+        }
         return res.status(200).send({
           status: 'Success',
           message: 'This is your Favorite Recipes',
           data: fave
         });
-      })
-      .catch(err => res.status(400).send(err));
+      });
   }
 }

@@ -22,9 +22,9 @@
 
     <!-- Bootstrap.js, Jquery.js, Popper.js -->
 
-    <!--<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/popper-dist/umd/popper.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
   </head>
   <body id="recipe-listing"><!--Body tag -->
@@ -42,9 +42,6 @@
             <li class="nav-item">
               <a class="nav-link" href="recipeListing.html">Recipe Listing/Catalog</a>
             </li>
-           <li class="nav-item ">
-              <a class="nav-link" href="recipeDetails.html"> Recipe Details</a>
-            </li>
             <li class="nav-item active">
               <a class="nav-link" href="addRecipe.html"><strong>Add Recipe</strong><span class="sr-only">(current)</span></a>
             </li>
@@ -61,7 +58,7 @@
     <div class="container"><!-- Container for the Header section -->
       <div class="row">
       <div class="text-center">
-        <h1>Add, View, Modify &amp; Delete Your Recipes Here</h1>
+        <h1>Add Your Recipes Here</h1>
         <p class="home-para">
           Recipes are a great instructional-tools that are used to make awesome tasting foods. Below is a list or catalog of the Recipes added. Also you have the opportunity of searching for a Recipe you are in bad need of. 
           While still here, please checkout the most Popular Recipes below.
@@ -72,42 +69,28 @@
     <hr >
     <div class="container"><!-- Start container for Add Form -->
       <div class="row">
-        <div class="col-sm-5">
-            <div class="form-group row">
-                <label for="example-text-input" class="col-2 col-form-label home-para">Title</label>
-                <div class="col-10">
-                  <input class="form-control" type="text" value="Title of Recipe" id="example-text-input">
-                </div>
-              </div>
-
-          <form method="POST" action="/add-recipe">
+        <div class="col-sm-8">
+          <form method="POST" class="form-horizontal" role="form"  action="/add-recipe">
+            <div class="form-group">
+              <label for="add-recipe" class=" home-para">Title</label>
+              <input class="form-control" type="text" value="Title of Recipe" id="example-text-input" >
+            </div>            
+            <div class="form-group">
+              <label for="add-recipe" class="home-para">Add Your Recipe Ingredients below:</label>
+              <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Enter The Ingredients Here"></textarea>
+            </div>           
             <div class="form-group">
               <label for="add-recipe" class="home-para">Add Recipe below:</label>
               <textarea class="form-control" id="exampleTextarea" rows="8" placeholder="Enter your Recipe Here"></textarea>
             </div>
-            <button type="button" class="btn btn-outline-dark btn-sm" id="add-recipe"><span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>  Add Recipe</button>
+            <div class="form-group">
+              <label for="add-recipe">Upload a picture of the food</label>
+              <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+            </div>  
+            <button type="button" class="btn btn-sm" id="add-recipe"><span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>  Add Recipe</button>  
           </form>
-          <div class="form-group">
-            <label for="exampleInputFile">Upload a picture of the food</label>
-            <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-          </div>    
-    </div><!-- End Container Modify/View Recipe FORM -->
-    <div class="col-sm-5">
-        <div class="container">
-            <form method="POST" action="/add-recipe">
-              <div class="form-group">
-                <label for="add-recipe" class="home-para">Add Your Recipe Ingredients below:</label>
-                <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Enter The Ingredients Here"></textarea>
-              </div>
-              <button type="button" class="btn btn-outline-dark btn-sm" id="add-recipe"><span><i class="fa fa-paper-plane" aria-hidden="true"></i></span>Add Ingredients</button>
-            </form>
           
-        </div>
-      
-    </div>
-      
-
-
+    </div><!-- End Container Modify/View Recipe FORM -->
     </div>
     </div>
     </div>

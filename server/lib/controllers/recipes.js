@@ -1,34 +1,25 @@
 // import Modules
-import model from '../model';
+import { Recipes, Reviews, Favorites } from '../model';
 
-const Recipe = model.Recipes;
-const Reviews = model.Reviews;
-const Favorites = model.Favorites;
 
 /**
  * This is a Recipes class that allows you POST a recipe
  */
-export class Recipes {
+export class Recipe {
   /**
  * Post recipe into the database
+ * @static
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
  * @return {object} the JSON returned to the client as response
- */
+ * @memberof Recipe
+  */
   static postRecipes(req, res) {
     // grab values from the req object
     const { title, content } = req.body;
     const userId = req.decoded.id;
-    /* Authenticates user, returns a status
-    message asking the user to supply token */
-    if (!userId) {
-      return res.status(401).send({
-        status: 'Fail',
-        message: 'You are not authorized to post a recipe, please send your token in the header'
-      });
-    }
     /* When user is authenticated, we store data into the database */
-    return Recipe
+    return Recipes
       .create({
         title,
         content,
@@ -36,7 +27,8 @@ export class Recipes {
       })
       .then((recipes) => {
         res.status(201).send({
-          success: true,
+          status: 'Success',
+          message: 'Recipe added',
           recipe: recipes,
         });
       })
@@ -46,18 +38,48 @@ export class Recipes {
 
 /**
  * This is a Recipes class that allows you get all recipes a user has posted
+ * @export listAll method
+ * @class RecipeList
  */
 export class RecipeList {
   /**
  * parse values from the req.body & req.decoded
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} JSON -The JSON returned to the client as response containing all recipes
+ * @returns {object} JSON -The JSON returned to the client as response containing all recipes
  * and reviews
+ * @static
+ * @memberof RecipeList
  */
   static listAll(req, res) {
-    /* Get all recipes in the database */
-    return Recipe
+    /* Get all recipes with most votes in descending order from the database */
+    const { sort, order } = req.query;
+    if (sort === 'upvotes' && order === 'desc') {
+      /* Find all recipes with upVotes property and returns them in descending order */
+      return Recipes
+        .findAll({
+          order: [['upVotes', 'DESC']]
+        })// if no upVotes is found it returns an error
+        .then((upvotes) => {
+          if (!upvotes) {
+            return res.status(404).send({
+              status: 'Fail',
+              message: 'No upvotes found',
+              data: upvotes
+            });
+          }
+          /* Returns a JSON array objects in descending
+          order based on the most upvotes */
+          return res.status(200).send({
+            status: 'Success',
+            message: 'Upvotes found and displayed in descending order',
+            data: upvotes
+          });
+        })
+        .catch(err => res.status(400).send(err));
+    }
+    /* Get all recipes */
+    return Recipes
       .findAll({
         include: [
           {
@@ -73,11 +95,17 @@ export class RecipeList {
       .then((recipe) => {
         /* Checks if db is empty and returns a notice to enter a recipe */
         if (recipe.length === 0) {
-          return res.status(200).send({
-            message: 'No Recipe available, please enter a recipe.'
+          return res.status(400).send({
+            status: 'Fail',
+            message: 'No Recipe available, please enter a recipe.',
+            data: recipe
           });
         }
-        return res.status(200).send(recipe);
+        return res.status(200).send({
+          status: 'Success',
+          message: 'Recipes below',
+          data: recipe
+        });
       })
       .catch(error => res.status(400).send(error));
   }
@@ -86,27 +114,25 @@ export class RecipeList {
 
 /**
  * This is a Recipes class that allows you to update a recipe
+ * @exports updateRecipe method
+ * @class RecipeUpdate
  */
 export class RecipeUpdate {
   /**
  * parse values from the req.body & req.decoded
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} JSON -The JSON returned to the client as response containing
- * the modified recipe.
+ * @return {object|JSON|array} - JSON is returned signifying success or failr of
+ *                              the modified recipe.
+ * @static
+ * @memberof RecipeUpdate
  */
   static updateRecipe(req, res) {
     /* Grab values to be used to authenticate from the request object */
     const userId = req.decoded.id;
-    if (!userId) {
-      // if auth fails it returns this error
-      return res.status(401).send({
-        success: false,
-        message: 'You are not authorized to post a recipe, please send your token in the header'
-      });
-    }
+    
     /* Finds a recipe to be updated */
-    return Recipe
+    return Recipes
       .find({
         where: {
           id: parseInt(req.params.id, 10),
@@ -116,42 +142,51 @@ export class RecipeUpdate {
       .then((recipe) => {
         if (!recipe) {
           return res.status(404).send({
+            status: 'Fail',
             message: 'Recipe Not Found',
+            data: recipe
           });
         }
-        /* Updates the recipe */
+        /* Updates the recipe and returns the updated recipe */
         return recipe
           .update({
+            title: req.body.title || recipe.title,
             content: req.body.content || recipe.content
           })
-          .then(updatedRecipe => res.status(200).send(updatedRecipe))
-          .catch(err => res.status(400).send(err));
+          .then(updatedRecipe => res.status(200).send({
+            status: 'Success',
+            message: 'Recipe updated successfully',
+            data: updatedRecipe
+          }));
+        // .catch(err => res.status(400).send(err));
       })
-      .catch(err => res.status(400).send(err));
+      .catch(() => res.status(400).send({
+        status: 'Fail',
+        message: 'Please enter a number representing the recipe'
+      }));
   }
 }
 
 /**
  * This is a Recipes class that allows you to delete a recipe
+ * @export deleteRecipe method
+ * @class RecipeDelete
  */
 export class RecipeDelete {
 /**
  * parse values from the req.body & req.decoded to be used to delete the recipe
+ * @static
  * @param {object} req - The request object from the client
  * @param {object} res - The response object to the client
- * @return {object} JSON
+ * @return {object} JSON object notifying the success of the delete request
+ * @memberof RecipeDelete
  */
   static deleteRecipe(req, res) {
     /* Checks if user is authenticated */
     const userId = req.decoded.id;
-    if (!userId) {
-      return res.status(401).send({
-        success: false,
-        message: 'You are not authorized to post a recipe, please send your token in the header or Signup for an account to post a recipe'
-      });
-    }
+    
     /* if authenticated, we find the recipe we want to delete */
-    return Recipe
+    return Recipes
       .find({
         where: {
           id: parseInt(req.params.id, 10),
@@ -161,16 +196,23 @@ export class RecipeDelete {
       .then((recipe) => {
         if (!recipe) {
           return res.status(404).send({
+            status: 'Fail',
             message: 'Recipe Not Found'
           });
         }
         /* Then we delete the recipe */
         return recipe
           .destroy()
-          .then(() => res.status(200).send({ message: 'Recipe successfully deleted' }))
-          .catch(err => res.status(404).send(err));
+          .then(() => res.status(200).send({
+            status: 'Success',
+            message: 'Recipe successfully deleted'
+          }));
+        // .catch(err => res.status(404).send(err));
       })
-      .catch(err => res.status(404).send(err));
+      .catch(() => res.status(404).send({
+        status: 'Fail',
+        message: 'Please enter a number'
+      }));
   }
 }
 

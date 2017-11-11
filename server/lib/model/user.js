@@ -1,51 +1,52 @@
 // User Model
-export default (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
+export default (sequelize, Sequelize) => {
+  const Users = sequelize.define('Users', {
     username: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
-      unique: {
-        args: true,
-        msg: 'This username already exists'
+      unique: true,
+      validate: {
+        is: /^[a-z]+$/i
       }
     },
     email: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
+      validate: {
+        isEmail: {
+          msg: 'Please enter a valid email address'
+        },
+        isLowercase: {
+          msg: 'your email must be in lowercase'
+        }
+      },
       unique: {
         args: true,
-        msg: 'This email already exist'
+        msg: 'This email is already taken, enter a new email address'
       },
-      validate: {
-        notEmpty: {
-          msg: 'Email is required.'
-        }
-      }
     },
     password: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        notEmpty: {
-          msg: 'password is required'
-        }
+        notEmpty: true
       }
     },
   });
   /* User has a relationship with Recipes, Favorites and Votes */
-  User.associate = (model) => {
-    User.hasMany(model.Recipes, {
+  Users.associate = (model) => {
+    Users.hasMany(model.Recipes, {
       foreignKey: 'userId',
       as: 'recipes',
     });
-    User.hasMany(model.Favorites, {
+    Users.hasMany(model.Favorites, {
       foreignKey: 'userId',
       as: 'favorites'
     });
-    User.hasOne(model.Votes, {
+    Users.hasOne(model.Votes, {
       foreignKey: 'userId',
       as: 'votes'
     });
   };
-  return User;
+  return Users;
 };
